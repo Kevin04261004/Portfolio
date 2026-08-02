@@ -389,9 +389,11 @@
       '<span class="bot__st">' + esc(b.status) + "</span></div>" +
       '<div class="bot__log" aria-live="polite"></div>' +
       '<div class="bot__chips"></div>' +
+      /* the input must be a direct child of the form: a visually-hidden
+         <label> wrapper would drag it off screen with it */
       '<form class="bot__in">' +
-      '<label class="vh">질문 입력<input type="text" autocomplete="off"' +
-      attr("placeholder", b.placeholder) + "></label>" +
+      '<input type="text" autocomplete="off" aria-label="질문 입력"' +
+      attr("placeholder", b.placeholder) + ">" +
       "<button type=\"submit\">" + esc(b.send) + "</button></form>" +
       '<div class="bot__foot">' + b.foot + "</div></div>";
   };
