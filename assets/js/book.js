@@ -409,6 +409,7 @@
     entered = true;
     intro.classList.add("is-open");
     document.body.classList.add("entered");
+    P.intro.stop();                       /* don't leave the reel running behind the book */
     base = Math.floor(target / PP) * PP;
     if (base > 0) document.body.classList.add("turned");
     shownIdx = []; setTimeout(function () { render(); }, reduce ? 0 : 380);
@@ -422,6 +423,7 @@
     requestAnimationFrame(function () {
       requestAnimationFrame(function () { intro.classList.remove("is-open"); });
     });
+    P.intro.start();
   }
   P.intro.mount(intro, { onEnter: enterBook });
   document.getElementById("homeBtn").addEventListener("click", exitBook);

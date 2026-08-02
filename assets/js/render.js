@@ -75,6 +75,24 @@
   }
 
   /* ---------------------------------------------------------- game index */
+  /* The play video a page links to, with the timestamp the author chose:
+     "…watch?v=m4Nka0iVqvw&t=329s" starts the reel at the good part. */
+  function videoIn(page) {
+    var found = null;
+    page.blocks.forEach(function (b) {
+      var items = b.t === "links" ? b.items : (b.t === "vibe" ? b.links : null);
+      if (!items || found) return;
+      items.forEach(function (l) {
+        if (found) return;
+        var m = l.href.match(/youtube\.com\/watch\?v=([\w-]+)/);
+        if (!m) return;
+        var t = l.href.match(/[?&]t=(\d+)/);
+        found = { id: m[1], start: t ? +t[1] : 0, href: l.href };
+      });
+    });
+    return found;
+  }
+
   /* Everything that is a game, pulled out of the pages that describe one.
      Used by the entry screen; nothing here is authored twice. */
   function games() {
@@ -92,6 +110,7 @@
             roles: b.tags.filter(function (t) { return t.kind === "role"; })
               .map(function (t) { return t.text; }),
             award: (b.tags.filter(function (t) { return t.kind === "win"; })[0] || {}).text || null,
+            video: videoIn(p),
             wip: false
           });
         } else if (b.t === "vibe") {
@@ -102,6 +121,8 @@
             stack: b.tags.slice(0, 2).join(" · "),
             roles: ["개인 개발"],
             award: null,
+            video: videoIn(p),          /* null: it links a playable build, not a video */
+            play: (b.links[0] || {}).href || null,
             status: b.status.replace(/^●\s*/, ""),
             wip: true
           });

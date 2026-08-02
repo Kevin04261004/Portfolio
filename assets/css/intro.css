@@ -46,6 +46,58 @@
 .intro__stats dt{font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:var(--ink3);text-transform:uppercase}
 .intro__stats dd{margin:5px 0 0;font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:-.03em;color:var(--hot)}
 
+/* ---------- the reel ----------
+   One iframe, swapped as the selection moves. It starts muted because
+   browsers will not autoplay with sound; the control row offers it. */
+.reel{
+  display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:18px;
+  margin-top:30px;padding-top:26px;border-top:1px solid var(--hair);
+}
+.reel__frame{
+  position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;
+  background:#0C0703;border:1px solid var(--hair);
+  box-shadow:0 24px 54px -26px rgba(0,0,0,.9);
+}
+.reel__v{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+/* keeps the embed from stealing the pointer while the list is being browsed */
+.reel__veil{position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 60px 6px rgba(12,7,3,.55)}
+
+.reel__now{display:flex;flex-direction:column;min-width:0;padding-top:2px}
+.reel__label{
+  display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;
+  font-weight:700;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase;
+}
+.reel__dot{width:6px;height:6px;border-radius:50%;background:var(--hot2);flex-shrink:0;
+  animation:reelpulse 1.6s ease-in-out infinite}
+@keyframes reelpulse{0%,100%{opacity:.35}50%{opacity:1}}
+.reel__i{margin-left:auto;color:var(--ink3);letter-spacing:.1em}
+.reel__t{
+  font-family:var(--serif);font-size:clamp(21px,2.9vw,30px);font-weight:700;
+  letter-spacing:-.04em;line-height:1.16;margin:10px 0 0;
+}
+.reel__g{font-size:13px;letter-spacing:-.02em;color:var(--ink2);margin-top:7px}
+.reel__r{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink3);
+  margin-top:8px;line-height:1.6}
+
+.reel__ctl{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:16px}
+.reel__ctl button{
+  font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--ink2);
+  background:rgba(255,235,205,.06);border:1px solid var(--hair);border-radius:5px;
+  padding:7px 10px;cursor:pointer;transition:.16s;line-height:1;
+}
+.reel__ctl button:hover{color:var(--ink);border-color:rgba(255,200,140,.55);background:rgba(255,220,170,.13)}
+.reel__snd{margin-left:auto}
+
+.reel__go{
+  margin-top:12px;text-align:left;
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;
+  color:var(--hot);background:transparent;border:1px solid rgba(240,168,92,.45);
+  border-radius:6px;padding:11px 14px;cursor:pointer;transition:.16s;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.reel__go:hover{background:rgba(240,168,92,.14);border-color:var(--hot);color:#FFD9A8}
+
 /* ---------- section rule ---------- */
 .intro__sec{
   display:flex;align-items:center;gap:10px;
@@ -53,7 +105,8 @@
   text-transform:uppercase;color:var(--ink2);margin:38px 0 2px;
 }
 .intro__sec em{font-style:normal;color:var(--hot)}
-.intro__sec::after{content:"";flex:1;height:1px;background:var(--hair)}
+.intro__sec::after{content:"";flex:1;height:1px;background:var(--hair);order:1}
+.intro__sec small{order:2;font-size:9px;letter-spacing:.1em;color:var(--ink3);text-transform:none;white-space:nowrap}
 
 /* ---------- the game index ---------- */
 .glist{display:flex;flex-direction:column}
@@ -83,6 +136,15 @@
 .game--wip .game__yr{color:var(--hot2)}
 .game--wip .game__w{color:var(--hot)}
 
+/* the row whose video is on screen */
+.game.is-playing{background:rgba(240,168,92,.09)}
+.game.is-playing .game__t{color:var(--hot)}
+.game.is-playing .game__yr{color:var(--hot)}
+.game.is-playing::before{
+  content:"";position:absolute;left:0;top:8px;bottom:8px;width:2px;background:var(--hot);
+}
+.game{position:relative}
+
 .intro__more{font-size:12.5px;line-height:1.75;color:var(--ink2);margin:20px 0 0;letter-spacing:-.015em}
 .intro__more b{color:var(--ink);font-weight:700}
 
@@ -103,6 +165,12 @@
 /* ---------- leaving ---------- */
 .intro.is-open{opacity:0;transform:translateY(-26px);pointer-events:none}
 .intro.is-gone{display:none}
+
+@media (max-width:900px){
+  .reel{grid-template-columns:1fr;gap:14px}
+  .reel__ctl{padding-top:12px}
+  .reel__go{margin-top:10px}
+}
 
 @media (max-width:820px){
   .game{
