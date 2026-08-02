@@ -75,11 +75,17 @@
   }
 
   /* ---------------------------------------------------------- game index */
-  /* The play video a page links to, with the timestamp the author chose:
-     "…watch?v=m4Nka0iVqvw&t=329s" starts the reel at the good part. */
+  /* The play video a page links to.
+
+     These are recordings of demos and presentations, so second 0 is
+     usually a title card. `highlight` (seconds, on the phead block) says
+     where the game actually starts showing; without one, a video is not
+     worth playing unattended, and `hasHighlight` lets the entry screen
+     keep it out of the unattended rotation. */
   function videoIn(page) {
-    var found = null;
+    var found = null, highlight = null;
     page.blocks.forEach(function (b) {
+      if (b.t === "phead" && b.highlight != null) highlight = b.highlight;
       var items = b.t === "links" ? b.items : (b.t === "vibe" ? b.links : null);
       if (!items || found) return;
       items.forEach(function (l) {
@@ -90,6 +96,10 @@
         found = { id: m[1], start: t ? +t[1] : 0, href: l.href };
       });
     });
+    if (found) {
+      if (highlight != null) found.start = highlight;
+      found.hasHighlight = found.start > 0;
+    }
     return found;
   }
 

@@ -18,7 +18,9 @@
 
   var R = P.render;
   var esc = R.esc;
-  var SLOT_MS = 13000;                  /* how long each game holds the reel */
+  /* Swapping the iframe costs a reload and a few seconds of buffering, so a
+     slot has to be long enough that what you mostly see is the game. */
+  var SLOT_MS = 30000;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var canHover = !window.matchMedia || window.matchMedia("(hover: hover)").matches;
 
@@ -145,7 +147,8 @@
           toggleBtn = el.querySelector('[data-reel="toggle"]'),
           soundBtn = el.querySelector(".reel__snd");
 
-      var at = 0, timer = null, muted = true, rolling = !reduce, live = false;
+      var highlighted = reel.filter(function (g) { return g.video.hasHighlight; }).length;
+      var at = 0, timer = null, muted = true, rolling = !reduce && highlighted > 1, live = false;
 
       function paint() {
         var g = reel[at];
@@ -162,15 +165,28 @@
       }
 
       function load(autoplay) {
+        /* the reload flashes black; fade across it */
+        frame.parentNode.classList.add("is-swapping");
         frame.src = embedSrc(reel[at].video, muted, autoplay);
         live = true;
+        setTimeout(function () { frame.parentNode.classList.remove("is-swapping"); }, 60);
         paint();
+      }
+
+      /* Unattended, only visit videos whose good moment is known — the rest
+         would open on a title card. They stay reachable by hand. */
+      function nextHighlighted(from, step) {
+        for (var n = 1; n <= reel.length; n++) {
+          var i = (from + step * n + reel.length * n) % reel.length;
+          if (reel[i].video.hasHighlight) return i;
+        }
+        return from;
       }
 
       function schedule() {
         clearTimeout(timer);
-        if (!rolling) return;
-        timer = setTimeout(function () { go(at + 1, true); }, SLOT_MS);
+        if (!rolling || highlighted < 2) return;
+        timer = setTimeout(function () { go(nextHighlighted(at, 1), true); }, SLOT_MS);
       }
 
       function go(next, autoplay) {
@@ -225,11 +241,12 @@
         if (opts.onEnter) opts.onEnter(b.dataset.enter || null);
       });
 
-      /* start it: muted, because browsers refuse to autoplay with sound */
-      at = 0;
+      /* Open on the first game whose good moment is known, muted because
+         browsers refuse to autoplay with sound. */
+      at = reel[0].video.hasHighlight ? 0 : nextHighlighted(0, 1);
       if (reduce) {
         setRolling(false);
-        frame.src = embedSrc(reel[0].video, true, false);
+        frame.src = embedSrc(reel[at].video, true, false);
         paint();
       } else {
         load(true);

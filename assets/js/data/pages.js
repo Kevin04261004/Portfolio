@@ -96,6 +96,7 @@ PORTFOLIO.pages = [
       {
         "t": "phead",
         "genre": "스타일리쉬 액션",
+        "highlight": 329,
         "tags": [
           {"text":"PD","kind":"role"},
           {"text":"TD","kind":"role"},
@@ -259,6 +260,7 @@ PORTFOLIO.pages = [
       {
         "t": "phead",
         "genre": "3D 액션",
+        "highlight": 493,
         "tags": [
           {"text":"TD","kind":"role"},
           {"text":"Unity 2022 LTS / FMOD"}
@@ -343,6 +345,7 @@ PORTFOLIO.pages = [
       {
         "t": "phead",
         "genre": "도트 어드벤처",
+        "highlight": 110,
         "tags": [
           {"text":"TD","kind":"role"},
           {"text":"Unity 2021 LTS / PC"}
@@ -397,6 +400,7 @@ PORTFOLIO.pages = [
       {
         "t": "phead",
         "genre": "1인칭 심리 호러",
+        "highlight": 8,
         "tags": [
           {"text":"PD","kind":"role"},
           {"text":"프로그래머","kind":"role"},
