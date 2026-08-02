@@ -64,7 +64,7 @@
       ["개인 프로젝트 · 학습", t.solo + "건"],
       ["PD", role("PD")],
       ["TD", role("TD")],
-      ["메인 프로그래머", role("메인 프로그래머")]
+      ["프로그래머", role("프로그래머")]
     ];
 
     return '<div class="intro__inner">' +

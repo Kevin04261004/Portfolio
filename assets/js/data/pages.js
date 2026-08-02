@@ -99,12 +99,12 @@ PORTFOLIO.pages = [
         "tags": [
           {"text":"PD","kind":"role"},
           {"text":"TD","kind":"role"},
-          {"text":"메인 프로그래머","kind":"role"},
+          {"text":"프로그래머","kind":"role"},
           {"text":"Unreal Engine 5.4 / PC"},
           {"text":"A+","kind":"win"}
         ],
         "title": "미마미",
-        "lead": "보스전 중심의 스타일리쉬 액션 게임. <b>16인 팀</b>의 메인 프로그래머로 시작해, PD 부재로 진행이 지연된 후반부에 직접 PD를 이어받아 완주까지 끌고 갔습니다.",
+        "lead": "보스전 중심의 스타일리쉬 액션 게임. <b>16인 팀</b>의 프로그래머로 시작해, PD 부재로 진행이 지연된 후반부에 직접 PD를 이어받아 완주까지 끌고 갔습니다.",
         "context": ["학기작 프로젝트","스타일리쉬 액션"],
         "period": "2024.08 — 2024.12",
         "duration": "15주"
@@ -121,7 +121,7 @@ PORTFOLIO.pages = [
         "t": "blk",
         "h": "개요",
         "body": [
-          {"k":"list","items":["<b>핵심 목표</b> — 고퀄리티 보스전 중심의 액션 메커니즘 구현 및 카툰 렌더링 스타일 구축","<b>역할</b> — 메인 프로그래머 및 기술 지원, 후반부 PD 겸임","<b>규모</b> — 16인 팀 / 15주 학기 내 제작 / Unreal Engine 5.4","<b>성과</b> — 교과목 성적 <b>A+</b>"]}
+          {"k":"list","items":["<b>핵심 목표</b> — 고퀄리티 보스전 중심의 액션 메커니즘 구현 및 카툰 렌더링 스타일 구축","<b>역할</b> — 프로그래머 및 기술 지원, 후반부 PD 겸임","<b>규모</b> — 16인 팀 / 15주 학기 내 제작 / Unreal Engine 5.4","<b>성과</b> — 교과목 성적 <b>A+</b>"]}
         ]
       },
       {
@@ -189,7 +189,7 @@ PORTFOLIO.pages = [
         "tags": [
           {"text":"PD","kind":"role"},
           {"text":"TD","kind":"role"},
-          {"text":"메인 프로그래머","kind":"role"},
+          {"text":"프로그래머","kind":"role"},
           {"text":"Unity / Live2D SDK"},
           {"text":"우수상","kind":"win"}
         ],
@@ -524,7 +524,7 @@ PORTFOLIO.pages = [
         "genre": "모바일 벽돌깨기",
         "tags": [
           {"text":"PD","kind":"role"},
-          {"text":"메인 프로그래머","kind":"role"},
+          {"text":"프로그래머","kind":"role"},
           {"text":"Unity 5 / Mobile"}
         ],
         "title": "Hammzi-Swipe",
@@ -545,7 +545,7 @@ PORTFOLIO.pages = [
         "t": "blk",
         "h": "개요",
         "body": [
-          {"k":"list","items":["<b>플랫폼 / 엔진</b> — 모바일 / Unity 5","<b>주요 특징</b> — 직관적인 스와이프 조작 기반의 벽돌깨기, CSV 데이터 연동 시스템","<b>역할</b> — PD(기획 및 일정 관리) 및 메인 프로그래밍"]}
+          {"k":"list","items":["<b>플랫폼 / 엔진</b> — 모바일 / Unity 5","<b>주요 특징</b> — 직관적인 스와이프 조작 기반의 벽돌깨기, CSV 데이터 연동 시스템","<b>역할</b> — PD(기획 및 일정 관리) 및 프로그래밍"]}
         ]
       },
       {
@@ -573,7 +573,6 @@ PORTFOLIO.pages = [
         "genre": "2D 횡스크롤 러닝",
         "tags": [
           {"text":"프로그래머","kind":"role"},
-          {"text":"UI","kind":"role"},
           {"text":"Unity 2019 LTS / PC"}
         ],
         "title": "달려라 산타독!",
@@ -594,7 +593,7 @@ PORTFOLIO.pages = [
         "t": "blk",
         "h": "개요",
         "body": [
-          {"k":"list","items":["<b>성격</b> — 교내 첫 게임잼 참가작 / 2D 횡스크롤 러닝 게임","<b>기간</b> — 1개월 (게임잼 형식)","<b>역할</b> — 프로그래머 및 UI 담당"]}
+          {"k":"list","items":["<b>성격</b> — 교내 첫 게임잼 참가작 / 2D 횡스크롤 러닝 게임","<b>기간</b> — 1개월 (게임잼 형식)","<b>역할</b> — 프로그래머"]}
         ]
       },
       {
