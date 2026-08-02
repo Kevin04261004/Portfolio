@@ -43,9 +43,11 @@ PORTFOLIO.pages = [
         "t": "hire",
         "cells": [
           {"k":"희망 직무","v":"클라이언트 프로그래머","note":"중장기 — 테크니컬 PM / PD"},
-          {"k":"입사 가능 시기","v":"2027.01 ~","note":"2026.11.25 만기 전역 예정"},
+          {"k":"선호 엔진","v":"Unreal Engine","note":"Unreal 팀 1건 · 개인 다수 / Unity 팀 7건"},
+          {"k":"인턴 · 단기","v":"2026.12 — 2027.02","note":"만기 전역 직후, 복학 전 3개월"},
+          {"k":"정규직","v":"2028.02 졸업 이후","note":"2027.03 3학년(졸업학년) 복학 예정"},
           {"k":"희망 근무지","v":"판교","note":"경기도권 · 대구 중구 / 수성구"},
-          {"k":"선호 엔진","v":"Unreal Engine","note":"Unity 팀 프로젝트 7건 경험"}
+          {"k":"병역","v":"2026.11.25 만기 전역","note":"육군 전투지휘훈련단 당번병 병장"}
         ]
       },
       {
@@ -53,7 +55,7 @@ PORTFOLIO.pages = [
         "cols": [
           {"title":"일대기 / 학력","rows":[{"d":"2006.04","v":"출생"},{"d":"2018.04","v":"중국 만방국제학교 입학"},{"d":"2021.03","v":"중국 만방국제학교 자퇴 (코로나)"},{"d":"2021.06","v":"초등학교 검정고시 졸업"},{"d":"2021.12","v":"중학교 검정고시 졸업"},{"d":"2022.06","v":"고등학교 검정고시 졸업"},{"d":"2023.03","v":"청강문화산업대학교 입학 (게임 전공)"},{"d":"2026.11","v":"육군 전투지휘훈련단 당번병 병장 만기 전역 예정 (11.25)"},{"d":"2027.03","v":"3학년 졸업학년 복학 희망"}]},
           {"title":"자격 / 수상","rows":[{"d":"2022.09","v":"HSK 5급 취득"},{"d":"2024.07","v":"청강대 X 유니티 게임잼 우수상"},{"d":"2024.08","v":"정보처리기능사 취득"}]},
-          {"title":"활동 / 협업","rows":[{"d":"2023.08","v":"청강문화산업대학교 한얼 동아리 운영진"},{"d":"2024.03","v":"청강문화산업대학교 한얼 동아리 스터디장"},{"d":"2023—24","v":"팀 프로젝트 8건 참여 — PD 5회, TD 5회"},{"d":"현재","v":"군 복무로 휴학 중 · 웹 게임 AFK Meteor 개발 진행"}]}
+          {"title":"활동 / 협업","rows":[{"d":"2023.08","v":"청강문화산업대학교 한얼 동아리 운영진"},{"d":"2024.03","v":"청강문화산업대학교 한얼 동아리 스터디장"},{"d":"2023—24","v":"팀 프로젝트 8건 참여 — PD 5회, TD 5회 <span style=\"color:var(--dim)\">(학기 · 동아리 프로젝트 내 역할)</span>"},{"d":"현재","v":"군 복무로 휴학 중 · 웹 게임 AFK Meteor 개발 진행"}]}
         ]
       },
       {
@@ -114,7 +116,8 @@ PORTFOLIO.pages = [
       {
         "t": "links",
         "items": [
-          {"href":"https://www.youtube.com/watch?v=m4Nka0iVqvw&t=329s","external":true,"icon":"▶","text":"플레이 영상 보기"}
+          {"href":"https://www.youtube.com/watch?v=m4Nka0iVqvw&t=329s","external":true,"icon":"▶","text":"플레이 영상 보기"},
+          {"href":"https://github.com/Kevin04261004/2-2_Team16","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -204,7 +207,8 @@ PORTFOLIO.pages = [
       {
         "t": "links",
         "items": [
-          {"href":"https://www.youtube.com/watch?v=gHCZj0rF1ME","external":true,"icon":"▶","text":"플레이 영상 보기"}
+          {"href":"https://www.youtube.com/watch?v=gHCZj0rF1ME","external":true,"icon":"▶","text":"플레이 영상 보기"},
+          {"href":"https://github.com/Kevin04261004/UnityGameJam","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -360,7 +364,8 @@ PORTFOLIO.pages = [
       {
         "t": "links",
         "items": [
-          {"href":"https://www.youtube.com/watch?v=yHMLPyDOVHo&t=110s","external":true,"icon":"▶","text":"플레이 영상 보기"}
+          {"href":"https://www.youtube.com/watch?v=yHMLPyDOVHo&t=110s","external":true,"icon":"▶","text":"플레이 영상 보기"},
+          {"href":"https://github.com/Kevin04261004/HanEarl_Project","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -417,7 +422,8 @@ PORTFOLIO.pages = [
       {
         "t": "links",
         "items": [
-          {"href":"https://www.youtube.com/watch?v=YPM-Mq_N6Gc&t=8s","external":true,"icon":"▶","text":"플레이 영상 보기"}
+          {"href":"https://www.youtube.com/watch?v=YPM-Mq_N6Gc&t=8s","external":true,"icon":"▶","text":"플레이 영상 보기"},
+          {"href":"https://github.com/Kevin04261004/SingleGame","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -479,7 +485,8 @@ PORTFOLIO.pages = [
       {
         "t": "links",
         "items": [
-          {"href":"https://www.youtube.com/watch?v=I3GUWCWDo0I","external":true,"icon":"▶","text":"플레이 영상 보기"}
+          {"href":"https://www.youtube.com/watch?v=I3GUWCWDo0I","external":true,"icon":"▶","text":"플레이 영상 보기"},
+          {"href":"https://github.com/Kevin04261004/AI_Visual_Novel","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -541,7 +548,8 @@ PORTFOLIO.pages = [
       {
         "t": "links",
         "items": [
-          {"href":"https://www.youtube.com/watch?v=K7eGIhjWkEU","external":true,"icon":"▶","text":"플레이 영상 보기"}
+          {"href":"https://www.youtube.com/watch?v=K7eGIhjWkEU","external":true,"icon":"▶","text":"플레이 영상 보기"},
+          {"href":"https://github.com/Kevin04261004/2023_April_GameJam","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -639,7 +647,8 @@ PORTFOLIO.pages = [
         "lead": ["브라우저 탭에 띄워두고 방치하는 게임입니다. 뱀파이어 서바이버즈식 자동 전투에 방치형 성장을 얹고, 유저의 개입은 무기 강화·스킬 트리·빌드 구성 같은 <b>‘세팅’</b>에 집중시켰습니다.","기능을 먼저 쌓기보다 <b>ARCHITECTURE.md를 먼저 쓰고</b> 시작했습니다. 렌더링 기술 선택의 근거, 의존 방향, 결정론을 깨뜨리는 함수의 목록, 배제한 대안과 그 이유까지 문서에 남기고 그 문서를 기준으로 구현했습니다."],
         "tags": ["TypeScript","Vite","Canvas 2D","Vitest","Firebase Auth · Firestore","GitHub Pages"],
         "links": [
-          {"href":"https://kevin04261004.github.io/claude-code-game/","external":true,"icon":"▶","text":"게임 바로 플레이하기"}
+          {"href":"https://kevin04261004.github.io/claude-code-game/","external":true,"icon":"▶","text":"게임 바로 플레이하기"},
+          {"href":"https://github.com/Kevin04261004/claude-code-game","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
         ],
         "decs": [
           {"n":"DESIGN 01","title":"결정론적 시뮬레이션","desc":"고정 10 TPS 틱과 시드 기반 RNG로 <b>같은 입력이면 항상 같은 결과</b>가 나오게 했습니다. 브라우저마다 마지막 비트가 달라질 수 있는 <b>Math.sin/cos 사용을 금지</b>하고 룩업 테이블을 자체 구현해, 장시간 시뮬레이션에서 상태가 갈라지지 않도록 했습니다."},
@@ -671,7 +680,22 @@ PORTFOLIO.pages = [
     chapter: "개인 개발",
     blocks: [
       {"t":"h","text":"개인 프로젝트 · 학습"},
-      {"t":"sub","html":"과제와 스터디로 만든 <b>19건</b>입니다. 전부 플레이 영상을 남겼습니다. 위 버튼으로 분야를 좁힐 수 있고, 카드를 누르면 영상으로 이동합니다."},
+      {
+        "t": "sub",
+        "html": "과제와 스터디로 만든 <b>19건</b>입니다. 전부 플레이 영상을 남겼습니다. 아래 <b>대표 4건</b>을 먼저 보시고, 나머지는 버튼으로 분야를 좁혀 보실 수 있습니다."
+      },
+      {"t":"h3","text":"대표 4건"},
+      {
+        "t": "cards",
+        "variant": "lead",
+        "items": [
+          {"href":"https://www.youtube.com/watch?v=mthlYz6apw0","external":true,"k":"unreal net","img":"assets/img/solo/unreal-iocp.jpg","alt":"언리얼 IOCP 멀티 게임","title":"언리얼 IOCP 멀티 게임","meta":"Unreal 5.4 / IOCP · JobQueue · Protobuf","desc":"IOCP 서버와 UDP/TCP 통신, 로그인 암호화까지 직접 구현. 가장 오래 붙잡은 건 던전(텔레포트) 기능으로, 여러 룸을 만들고 룸 간 접속·이동을 구현하는 데 시간이 많이 들었습니다. 내부 테스트로 100명 동시 접속을 확인했습니다.","go":"▶ 영상"},
+          {"href":"https://www.youtube.com/watch?v=dpLbemGFVuM&t=9s","external":true,"k":"unity xr","img":"assets/img/solo/drone-hunter-vr.jpg","alt":"Drone Hunter : VR","title":"Drone Hunter : VR","meta":"Unity / Meta Quest 3","desc":"Unity로 제작한 Meta Quest 3 대상 VR 슈팅. AR/VR 프로그래밍 기말과제입니다.","go":"▶ 영상"},
+          {"href":"https://www.youtube.com/watch?v=tNlxN5e5zfk&t=65","external":true,"k":"unity net","img":"assets/img/solo/unity-multi-practice.jpg","alt":"유니티 멀티게임 연습","title":"유니티 멀티게임 연습","meta":"Unity 6 / UDP · TCP · MySQL · Docker","desc":"서버 구조를 직접 비교·검토하고 C/S UML을 설계한 뒤 구현한 멀티 게임입니다. 게임네트워크프로그래밍 기말과제.","go":"▶ 영상","repo":"https://github.com/Kevin04261004/network_final"},
+          {"href":"https://www.youtube.com/watch?v=oTNETUWRGvU","external":true,"k":"gfx cpp","img":"assets/img/solo/dx11-car.jpg","alt":"자동차 이동 (DirectX11 FX)","title":"자동차 이동 (DirectX11 FX)","meta":"DirectX 11 / C++","desc":"그래픽스 프로그래밍 심화 기말과제. DirectX 11 FX 파이프라인으로 자동차 이동을 구현했습니다.","go":"▶ 영상","repo":"https://github.com/Kevin04261004/DirectX11Study"}
+        ]
+      },
+      {"t":"h3","text":"그 외 15건 — 과제 · 스터디"},
       {
         "t": "filters",
         "items": [
@@ -688,11 +712,7 @@ PORTFOLIO.pages = [
         "t": "cards",
         "dense": true,
         "items": [
-          {"href":"https://www.youtube.com/watch?v=mthlYz6apw0","external":true,"k":"unreal net","img":"assets/img/solo/unreal-iocp.jpg","alt":"언리얼 IOCP 멀티 게임","title":"언리얼 IOCP 멀티 게임","meta":"Unreal 5.4 / IOCP · JobQueue · Protobuf","desc":"IOCP 서버와 UDP/TCP 통신, 로그인 암호화까지 직접 구현. 가장 오래 붙잡은 건 던전(텔레포트) 기능으로, 여러 룸을 만들고 룸 간 접속·이동을 구현하는 데 시간이 많이 들었습니다. 내부 테스트로 100명 동시 접속을 확인했습니다.","go":"▶ 영상"},
-          {"href":"https://www.youtube.com/watch?v=dpLbemGFVuM&t=9s","external":true,"k":"unity xr","img":"assets/img/solo/drone-hunter-vr.jpg","alt":"Drone Hunter : VR","title":"Drone Hunter : VR","meta":"Unity / Meta Quest 3","desc":"Unity로 제작한 Meta Quest 3 대상 VR 슈팅. AR/VR 프로그래밍 기말과제입니다.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=hTDdtHfg0Es","external":true,"k":"unreal gfx","img":"assets/img/solo/cinematics.jpg","alt":"게임 시네마틱 제작 (모음집)","title":"게임 시네마틱 제작 (모음집)","meta":"Unreal 5.5 / Sequencer","desc":"게임 그래픽 엔진 활용 과목의 중간·기말과제로 제작한 시네마틱 3편 모음입니다.","go":"▶ 영상"},
-          {"href":"https://www.youtube.com/watch?v=oTNETUWRGvU","external":true,"k":"gfx cpp","img":"assets/img/solo/dx11-car.jpg","alt":"자동차 이동 (DirectX11 FX)","title":"자동차 이동 (DirectX11 FX)","meta":"DirectX 11 / C++","desc":"그래픽스 프로그래밍 심화 기말과제. DirectX 11 FX 파이프라인으로 자동차 이동을 구현했습니다.","go":"▶ 영상"},
-          {"href":"https://www.youtube.com/watch?v=tNlxN5e5zfk&t=65","external":true,"k":"unity net","img":"assets/img/solo/unity-multi-practice.jpg","alt":"유니티 멀티게임 연습","title":"유니티 멀티게임 연습","meta":"Unity 6 / UDP · TCP · MySQL · Docker","desc":"서버 구조를 직접 비교·검토하고 C/S UML을 설계한 뒤 구현한 멀티 게임입니다. 게임네트워크프로그래밍 기말과제.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=AafhnPcF1nA&t=19s","external":true,"k":"unity net","img":"assets/img/solo/swipe-car.jpg","alt":"멀티 자동차 게임 (Swipe Car)","title":"멀티 자동차 게임 (Swipe Car)","meta":"Unity 5 / UDP · MySQL · Docker","desc":"UDP 기반 실시간 동기화와 Docker로 띄운 MySQL을 연동한 멀티 레이싱. 게임네트워크프로그래밍 중간과제.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=xzU4uJq0PPw","external":true,"k":"unity net","img":"assets/img/solo/word-chain.jpg","alt":"멀티 끝말잇기 게임","title":"멀티 끝말잇기 게임","meta":"Unity 6 / TCP","desc":"TCP 소켓 기반 실시간 대전 끝말잇기. 개발 중 마주친 이슈를 별도 문서로 정리했습니다. 게임네트워크기초 기말과제.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=nLxbhIZMTjk","external":true,"k":"unity net doc","img":"assets/img/solo/multi-intro.jpg","alt":"멀티 게임 입문하기!","title":"멀티 게임 입문하기!","meta":"Unity 5 / Photon PUN2","desc":"스터디장으로서 동아리원들과 함께 개발한 Photon PUN2 기반 멀티 게임입니다.","go":"▶ 영상"},

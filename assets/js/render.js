@@ -332,15 +332,29 @@
   };
 
   block.cards = function (b) {
-    return '<div class="grid' + (b.dense ? " grid--dense" : "") + '">' + join(b.items, function (c) {
-      return '<a class="card"' + attr("data-k", c.k) + attr("href", c.href) +
-        (c.external ? ' target="_blank" rel="noopener"' : "") + ">" +
-        "<img" + attr("src", c.img) + attr("alt", c.alt) + ' loading="lazy">' +
-        '<div class="card__in"><h3 class="card__t">' + esc(c.title) + "</h3>" +
-        '<div class="card__s">' + esc(c.meta) + "</div>" +
-        '<p class="card__d">' + c.desc + "</p>" +
-        '<span class="card__go">' + esc(c.go) + "</span></div></a>";
-    }) + "</div>";
+    var lead = b.variant === "lead";
+    return '<div class="grid' + (b.dense ? " grid--dense" : "") +
+      (lead ? " grid--lead" : "") + '">' + join(b.items, function (c) {
+        var body = "<img" + attr("src", c.img) + attr("alt", c.alt) + ' loading="lazy">' +
+          '<div class="card__in"><h3 class="card__t">' + esc(c.title) + "</h3>" +
+          '<div class="card__s">' + esc(c.meta) + "</div>" +
+          '<p class="card__d">' + c.desc + "</p>";
+
+        /* A lead card carries a second link to the source, so it cannot be one
+           big anchor — the links sit inside a plain container instead. */
+        if (!lead) {
+          return '<a class="card"' + attr("data-k", c.k) + attr("href", c.href) +
+            (c.external ? ' target="_blank" rel="noopener"' : "") + ">" + body +
+            '<span class="card__go">' + esc(c.go) + "</span></div></a>";
+        }
+        return '<div class="card card--lead"' + attr("data-k", c.k) + ">" + body +
+          '<div class="card__links">' +
+          anchor({ href: c.href, external: c.external }, "card__go", esc(c.go)) +
+          (c.repo
+            ? anchor({ href: c.repo, external: true }, "card__go card__go--ghost", "&lt;/&gt; 코드")
+            : "") +
+          "</div></div></div>";
+      }) + "</div>";
   };
 
   block.skills = function (b) {

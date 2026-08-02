@@ -78,6 +78,8 @@
       '<dl class="intro__stats">' + stats.map(function (s) {
         return "<div><dt>" + esc(s[0]) + "</dt><dd>" + esc(s[1]) + "</dd></div>";
       }).join("") + "</dl>" +
+      /* PD/TD read as industry titles unless the context is stated */
+      '<p class="intro__note">역할 표기는 학기 · 동아리 팀 프로젝트 기준입니다.</p>' +
       "</header>" +
 
       /* the reel: one iframe, swapped as the selection moves */
