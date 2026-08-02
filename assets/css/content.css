@@ -217,6 +217,9 @@ html[data-theme="night"] .blk li{color:#413526}
 .bot__bar b{color:var(--bone);font-weight:700;font-size:12px;letter-spacing:.03em}
 .bot__st{margin-left:auto;color:var(--signal)}
 .bot__log{padding:15px 14px 3px;min-height:150px;max-height:250px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+/* short viewports: give the log back to the input rather than losing it */
+@media (max-height:840px){ .bot__log{min-height:120px;max-height:190px} }
+@media (max-height:760px){ .bot__log{min-height:100px;max-height:140px} }
 .msg{display:flex;gap:9px;margin-bottom:14px}
 .msg__who{font-family:var(--mono);font-size:8.5px;letter-spacing:.11em;color:var(--dim);flex:0 0 38px;padding-top:4px;text-transform:uppercase}
 .msg__b{flex:1;min-width:0;font-size:12.5px;line-height:1.75;letter-spacing:-.015em}
@@ -236,7 +239,14 @@ html[data-theme="night"] .blk li{color:#413526}
 @keyframes bl{0%,60%,100%{opacity:.25}30%{opacity:1}}
 .msg__b.is-typing::after{content:"";display:inline-block;width:6px;height:12px;margin-left:2px;vertical-align:-1px;background:var(--signal);animation:cw .8s steps(1) infinite}
 @keyframes cw{0%,50%{opacity:1}50.01%,100%{opacity:0}}
-.bot__chips{display:flex;flex-wrap:wrap;gap:5px;padding:3px 14px 12px}
+/* One scrolling row, not six wrapped ones: wrapped chips pushed the input
+   below the fold of the page's scroll box on any laptop under ~900px tall,
+   which reads as "the chat is broken". */
+.bot__chips{display:flex;flex-wrap:nowrap;gap:5px;padding:3px 14px 12px;
+  overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch}
+.bot__chips::-webkit-scrollbar{display:none}
+.bot__chips button{flex:0 0 auto}
 .bot__chips button{font-family:var(--mono);font-size:10px;color:var(--dim);background:transparent;border:1px solid var(--line2);border-radius:100px;padding:5px 10px;cursor:pointer;transition:.16s}
 .bot__chips button:hover{color:var(--signal);border-color:var(--signal)}
 .bot__in{display:flex;gap:6px;padding:11px 13px;border-top:1px solid var(--line)}
