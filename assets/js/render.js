@@ -351,7 +351,7 @@
           '<div class="card__links">' +
           anchor({ href: c.href, external: c.external }, "card__go", esc(c.go)) +
           (c.repo
-            ? anchor({ href: c.repo, external: true }, "card__go card__go--ghost", "&lt;/&gt; 코드")
+            ? anchor({ href: c.repo, external: true }, "card__go card__go--ghost", "❯ 코드")
             : "") +
           "</div></div></div>";
       }) + "</div>";

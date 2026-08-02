@@ -7,12 +7,16 @@
    cover of the thing, and it should look the same in day and night.
    ============================================================ */
 .intro{
-  --ink:#F6EBD8; --ink2:rgba(246,235,216,.62); --ink3:rgba(246,235,216,.34);
+  --ink:#F6EBD8; --ink2:rgba(246,235,216,.62); --ink3:rgba(246,235,216,.52);
   --hair:rgba(255,228,190,.16); --hot:#F0A85C; --hot2:#E4693F;
   position:fixed;inset:0;z-index:200;overflow-y:auto;overscroll-behavior:contain;
+  /* the ruled-paper motif from .fsm__body, so the entry screen reads as the
+     closed book on the desk rather than a separate dark UI */
   background:
-    radial-gradient(120% 90% at 50% -10%,rgba(224,150,80,.16),transparent 60%),
-    linear-gradient(180deg,#2A1A0E,#190F07 62%,#130B05);
+    repeating-linear-gradient(0deg,rgba(255,214,160,.030) 0px,rgba(255,214,160,.030) 1px,
+      transparent 1px,transparent 26px),
+    radial-gradient(120% 90% at 50% -10%,rgba(224,150,80,.17),transparent 60%),
+    linear-gradient(180deg,#2E1D10,#1E1309 62%,#180E07);
   color:var(--ink);
   transition:opacity .5s ease,transform .6s cubic-bezier(.4,0,.2,1);
 }
@@ -67,7 +71,7 @@
 .reel__veil{position:absolute;inset:0;pointer-events:none;
   box-shadow:inset 0 0 60px 6px rgba(12,7,3,.55)}
 
-.reel__now{display:flex;flex-direction:column;min-width:0;padding-top:2px}
+.reel__now{display:flex;flex-direction:column;justify-content:center;min-width:0}
 .reel__label{
   display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;
   font-weight:700;letter-spacing:.2em;color:var(--ink3);text-transform:uppercase;
@@ -84,7 +88,7 @@
 .reel__r{font-family:var(--mono);font-size:10px;letter-spacing:.04em;color:var(--ink3);
   margin-top:8px;line-height:1.6}
 
-.reel__ctl{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:16px}
+.reel__ctl{display:flex;flex-wrap:wrap;gap:5px;margin-top:18px}
 .reel__ctl button{
   font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:var(--ink2);
   background:rgba(255,235,205,.06);border:1px solid var(--hair);border-radius:5px;

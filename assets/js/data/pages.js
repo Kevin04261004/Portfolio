@@ -115,7 +115,7 @@ PORTFOLIO.pages = [
         "t": "links",
         "items": [
           {"href":"https://www.youtube.com/watch?v=m4Nka0iVqvw&t=329s","external":true,"icon":"▶","text":"플레이 영상 보기"},
-          {"href":"https://github.com/Kevin04261004/2-2_Team16","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/2-2_Team16","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -206,7 +206,7 @@ PORTFOLIO.pages = [
         "t": "links",
         "items": [
           {"href":"https://www.youtube.com/watch?v=gHCZj0rF1ME","external":true,"icon":"▶","text":"플레이 영상 보기"},
-          {"href":"https://github.com/Kevin04261004/UnityGameJam","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/UnityGameJam","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -363,7 +363,7 @@ PORTFOLIO.pages = [
         "t": "links",
         "items": [
           {"href":"https://www.youtube.com/watch?v=yHMLPyDOVHo&t=110s","external":true,"icon":"▶","text":"플레이 영상 보기"},
-          {"href":"https://github.com/Kevin04261004/HanEarl_Project","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/HanEarl_Project","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -421,7 +421,7 @@ PORTFOLIO.pages = [
         "t": "links",
         "items": [
           {"href":"https://www.youtube.com/watch?v=YPM-Mq_N6Gc&t=8s","external":true,"icon":"▶","text":"플레이 영상 보기"},
-          {"href":"https://github.com/Kevin04261004/SingleGame","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/SingleGame","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -484,7 +484,7 @@ PORTFOLIO.pages = [
         "t": "links",
         "items": [
           {"href":"https://www.youtube.com/watch?v=I3GUWCWDo0I","external":true,"icon":"▶","text":"플레이 영상 보기"},
-          {"href":"https://github.com/Kevin04261004/AI_Visual_Novel","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/AI_Visual_Novel","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -547,7 +547,7 @@ PORTFOLIO.pages = [
         "t": "links",
         "items": [
           {"href":"https://www.youtube.com/watch?v=K7eGIhjWkEU","external":true,"icon":"▶","text":"플레이 영상 보기"},
-          {"href":"https://github.com/Kevin04261004/2023_April_GameJam","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/2023_April_GameJam","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "variant": "shot"
       },
@@ -646,7 +646,7 @@ PORTFOLIO.pages = [
         "tags": ["TypeScript","Vite","Canvas 2D","Vitest","Firebase Auth · Firestore","GitHub Pages"],
         "links": [
           {"href":"https://kevin04261004.github.io/claude-code-game/","external":true,"icon":"▶","text":"게임 바로 플레이하기"},
-          {"href":"https://github.com/Kevin04261004/claude-code-game","external":true,"icon":"&lt;/&gt;","text":"코드 보기","ghost":true}
+          {"href":"https://github.com/Kevin04261004/claude-code-game","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "decs": [
           {"n":"DESIGN 01","title":"결정론적 시뮬레이션","desc":"고정 10 TPS 틱과 시드 기반 RNG로 <b>같은 입력이면 항상 같은 결과</b>가 나오게 했습니다. 브라우저마다 마지막 비트가 달라질 수 있는 <b>Math.sin/cos 사용을 금지</b>하고 룩업 테이블을 자체 구현해, 장시간 시뮬레이션에서 상태가 갈라지지 않도록 했습니다."},

@@ -3,9 +3,15 @@
    Layout-agnostic: every layout loads this first.
    ============================================================ */
 :root{
-  --d1:#DCA063; --d2:#C9843F; --d3:#B2702F; --d4:#95591F;
+  /* the desk. Day used to be a loud 58%-saturation orange; pulled back so the
+     page floats on it instead of fighting it */
+  --d1:#CFA073; --d2:#B8834F; --d3:#9C6F44; --d4:#7E552F;
   --surface:#F8F3E7; --surface2:#F0E8D6; --line:#DCD0B4; --line2:#C9BA98;
-  --bone:#241C14; --dim:#7B6B55; --signal:#A8402A; --wire:#3D6A73;
+  --bone:#241C14; --dim:#6E5F49;
+  /* two tiers of red: --signal earns attention (CTA, award, meter, status),
+     --signalMute is structural (bullets, small labels, rules). One red doing
+     forty-seven jobs meant it signalled nothing. */
+  --signal:#A8402A; --signalMute:#94553F; --wire:#3D6A73;
   --onSig:#FDF7EA; --grid:rgba(120,96,52,.055);
   --sans:"Pretendard","Pretendard Variable",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Segoe UI",sans-serif;
   --mono:ui-monospace,"SF Mono","JetBrains Mono","Cascadia Mono",Consolas,"D2Coding","Nanum Gothic Coding",monospace;
@@ -15,16 +21,24 @@
   --safeT:env(safe-area-inset-top,0px); --safeB:env(safe-area-inset-bottom,0px);
   --safeL:env(safe-area-inset-left,0px); --safeR:env(safe-area-inset-right,0px);
 }
+/* Night dims the page, not just the room. It used to darken the desk from 21%
+   to 1% while the paper — most of the screen — stayed at 80%, so the moon
+   button promised something it did not do. The paper now drops to 63%. */
 html[data-theme="night"]{
   --d1:#4C3521; --d2:#3B2717; --d3:#2C1C10; --d4:#1C1109;
-  --surface:#EFE6D0; --surface2:#E5DBC1; --line:#CCBE9C; --line2:#B4A47E;
-  --bone:#2A2116; --dim:#6E5F49; --signal:#9A3721; --wire:#356169;
-  --onSig:#FBF5E6; --grid:rgba(90,72,38,.07);
+  --surface:#DCCFB0; --surface2:#D0C29F; --line:#BFB08C; --line2:#A99878;
+  --bone:#2A2116; --dim:#594C34;
+  --signal:#87301E; --signalMute:#763F2C; --wire:#2E555C;
+  --onSig:#FBF5E6; --grid:rgba(90,72,38,.09);
 }
 *{box-sizing:border-box}
 body{
   margin:0;color:var(--bone);font-family:var(--sans);font-size:15px;line-height:1.8;
   letter-spacing:-.01em;-webkit-font-smoothing:antialiased;
+  /* Korean breaks anywhere by default, so "궁극적인" was splitting across lines
+     as "궁극적 / 인". keep-all breaks at word boundaries; overflow-wrap keeps
+     long unbroken strings (URLs) from overflowing. */
+  word-break:keep-all;overflow-wrap:break-word;
 }
 input,textarea{-webkit-user-select:text;-moz-user-select:text;-ms-user-select:text;user-select:text}
 img{max-width:100%;display:block;-webkit-user-drag:none;user-drag:none}
