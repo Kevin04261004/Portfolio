@@ -57,13 +57,14 @@
     var shipped = games.filter(function (g) { return !g.wip; });
     var wip = games.filter(function (g) { return g.wip; });
 
+    /* counted off the role tags, so it can never drift from the pages */
     var role = function (k) { return (t.roles[k] || 0) + "회"; };
     var stats = [
       ["팀 프로젝트", t.team + "건"],
       ["개인 프로젝트 · 학습", t.solo + "건"],
       ["PD", role("PD")],
       ["TD", role("TD")],
-      ["프로그래밍 파트장", role("프로그래밍 파트장")]
+      ["메인 프로그래머", role("메인 프로그래머")]
     ];
 
     return '<div class="intro__inner">' +
