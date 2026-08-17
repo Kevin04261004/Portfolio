@@ -412,7 +412,13 @@
     P.intro.stop();                       /* don't leave the reel running behind the book */
     base = Math.floor(target / PP) * PP;
     if (base > 0) document.body.classList.add("turned");
-    shownIdx = []; setTimeout(function () { render(); }, reduce ? 0 : 380);
+    shownIdx = []; setTimeout(function () {
+      /* small screens read better as one long page — default to the flat view */
+      if (isSingle()) {
+        if (!document.body.classList.contains("flat")) flatten(true);
+        if (target) pages[target].scrollIntoView({ block: "start" });
+      } else render();
+    }, reduce ? 0 : 380);
     setTimeout(function () { intro.classList.add("is-gone"); }, reduce ? 0 : 900);
   }
   function exitBook() {
@@ -429,5 +435,5 @@
   document.getElementById("homeBtn").addEventListener("click", exitBook);
 
   applyMode();
-  render();
+  if (isSingle()) flatten(true); else render();
 })(window.PORTFOLIO);

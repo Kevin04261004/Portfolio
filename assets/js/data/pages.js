@@ -665,7 +665,7 @@ PORTFOLIO.pages = [
         "t": "decs",
         "items": [
           {"n":"WEB · APP","title":"속보 알림 서비스","desc":"중요한 속보가 뜨면 <b>카카오톡과 푸시 알림</b>으로 바로 보내주는 애플리케이션입니다. 뉴스 수집과 중요도 판별, 발송 채널 연동을 다루고 있습니다."},
-          {"n":"WEB","title":"데이팅 캘린더","desc":"연인이 함께 쓰는 일정 관리 서비스. 두 사람의 일정을 한 화면에서 맞추고 기념일을 챙기는 데 초점을 뒀습니다."},
+          {"n":"WEB","title":"러브 메모리","desc":"연인이 함께 쓰는 일정 관리 서비스. 두 사람의 일정을 한 화면에서 맞추고 기념일을 챙기는 데 초점을 뒀습니다. <a href=\"https://couple-app-tau-rouge.vercel.app/\" target=\"_blank\" rel=\"noopener\">바로 사용해 보기 ↗</a>"},
           {"n":"WEB","title":"이 포트폴리오","desc":"지금 보고 계신 이 페이지입니다. 노션 원본을 넘기고 <b>대화만으로</b> 이미지까지 담긴 단일 HTML 파일로 완성했습니다. 내용과 글은 전부 직접 작성했습니다."}
         ]
       }
@@ -687,8 +687,8 @@ PORTFOLIO.pages = [
         "t": "cards",
         "variant": "lead",
         "items": [
+          {"href":"https://www.youtube.com/watch?v=mXYi02y6b4M","external":true,"k":"cpp","img":"assets/img/solo/sort-grapher.jpg","alt":"Sort Grapher (WinAPI)","title":"Sort Grapher (WinAPI)","meta":"C · C++ / WinAPI 32","desc":"정렬 알고리즘의 동작 과정을 실시간 그래프로 시각화합니다. 게임 알고리듬 중간과제.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=mthlYz6apw0","external":true,"k":"unreal net","img":"assets/img/solo/unreal-iocp.jpg","alt":"언리얼 IOCP 멀티 게임","title":"언리얼 IOCP 멀티 게임","meta":"Unreal 5.4 / IOCP · JobQueue · Protobuf","desc":"IOCP 서버와 UDP/TCP 통신, 로그인 암호화까지 직접 구현. 가장 오래 붙잡은 건 던전(텔레포트) 기능으로, 여러 룸을 만들고 룸 간 접속·이동을 구현하는 데 시간이 많이 들었습니다. 내부 테스트로 100명 동시 접속을 확인했습니다.","go":"▶ 영상"},
-          {"href":"https://www.youtube.com/watch?v=dpLbemGFVuM&t=9s","external":true,"k":"unity xr","img":"assets/img/solo/drone-hunter-vr.jpg","alt":"Drone Hunter : VR","title":"Drone Hunter : VR","meta":"Unity / Meta Quest 3","desc":"Unity로 제작한 Meta Quest 3 대상 VR 슈팅. AR/VR 프로그래밍 기말과제입니다.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=tNlxN5e5zfk&t=65","external":true,"k":"unity net","img":"assets/img/solo/unity-multi-practice.jpg","alt":"유니티 멀티게임 연습","title":"유니티 멀티게임 연습","meta":"Unity 6 / UDP · TCP · MySQL · Docker","desc":"서버 구조를 직접 비교·검토하고 C/S UML을 설계한 뒤 구현한 멀티 게임입니다. 게임네트워크프로그래밍 기말과제.","go":"▶ 영상","repo":"https://github.com/Kevin04261004/network_final"},
           {"href":"https://www.youtube.com/watch?v=oTNETUWRGvU","external":true,"k":"gfx cpp","img":"assets/img/solo/dx11-car.jpg","alt":"자동차 이동 (DirectX11 FX)","title":"자동차 이동 (DirectX11 FX)","meta":"DirectX 11 / C++","desc":"그래픽스 프로그래밍 심화 기말과제. DirectX 11 FX 파이프라인으로 자동차 이동을 구현했습니다.","go":"▶ 영상","repo":"https://github.com/Kevin04261004/DirectX11Study"}
         ]
@@ -703,6 +703,7 @@ PORTFOLIO.pages = [
           {"f":"net","label":"네트워크"},
           {"f":"gfx","label":"그래픽스"},
           {"f":"cpp","label":"C · C++"},
+          {"f":"xr","label":"XR · VR"},
           {"f":"doc","label":"문서 · 발표"}
         ]
       },
@@ -715,7 +716,7 @@ PORTFOLIO.pages = [
           {"href":"https://www.youtube.com/watch?v=xzU4uJq0PPw","external":true,"k":"unity net","img":"assets/img/solo/word-chain.jpg","alt":"멀티 끝말잇기 게임","title":"멀티 끝말잇기 게임","meta":"Unity 6 / TCP","desc":"TCP 소켓 기반 실시간 대전 끝말잇기. 개발 중 마주친 이슈를 별도 문서로 정리했습니다. 게임네트워크기초 기말과제.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=nLxbhIZMTjk","external":true,"k":"unity net doc","img":"assets/img/solo/multi-intro.jpg","alt":"멀티 게임 입문하기!","title":"멀티 게임 입문하기!","meta":"Unity 5 / Photon PUN2","desc":"스터디장으로서 동아리원들과 함께 개발한 Photon PUN2 기반 멀티 게임입니다.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=KGKYbO35mvg","external":true,"k":"cpp","img":"assets/img/solo/sfml-pacman.jpg","alt":"SFML(C++)을 활용한 팩맨","title":"SFML(C++)을 활용한 팩맨","meta":"C · C++ / SFML","desc":"고스트 추적 알고리즘을 직접 구현한 팩맨. 게임 인공지능 중간과제입니다.","go":"▶ 영상"},
-          {"href":"https://www.youtube.com/watch?v=mXYi02y6b4M","external":true,"k":"cpp","img":"assets/img/solo/sort-grapher.jpg","alt":"Sort Grapher (WinAPI)","title":"Sort Grapher (WinAPI)","meta":"C · C++ / WinAPI 32","desc":"정렬 알고리즘의 동작 과정을 실시간 그래프로 시각화합니다. 게임 알고리듬 중간과제.","go":"▶ 영상"},
+          {"href":"https://www.youtube.com/watch?v=dpLbemGFVuM&t=9s","external":true,"k":"unity xr","img":"assets/img/solo/drone-hunter-vr.jpg","alt":"Drone Hunter : VR","title":"Drone Hunter : VR","meta":"Unity / Meta Quest 3","desc":"Unity로 제작한 Meta Quest 3 대상 VR 슈팅. AR/VR 프로그래밍 기말과제입니다.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=VEbyM6-MCN8","external":true,"k":"cpp","img":"assets/img/solo/snake.jpg","alt":"Snake Game","title":"Snake Game","meta":"C · C++","desc":"콘솔 기반 스네이크 게임과 개발 보고서를 함께 작성했습니다.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=BjAkx_YjdaM","external":true,"k":"cpp","img":"assets/img/solo/ck-bank.jpg","alt":"CK Bank","title":"CK Bank","meta":"C++ / OOP","desc":"객체지향프로그래밍 고급 과제로 제작한 은행 시스템입니다.","go":"▶ 영상"},
           {"href":"https://www.youtube.com/watch?v=XcAeNlNNwFY","external":true,"k":"cpp","img":"assets/img/solo/vending-machine.jpg","alt":"청강 자판기","title":"청강 자판기","meta":"C++ / 자료구조","desc":"게임 자료구조 과제. 자판기 로직을 자료구조로 구현했습니다.","go":"▶ 영상"},

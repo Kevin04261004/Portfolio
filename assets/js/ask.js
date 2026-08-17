@@ -103,7 +103,7 @@
     function ask(raw) {
       if (!raw || !raw.trim()) return;
       finishTyping();
-      push(qa.youLabel, raw.replace(/</g, "&lt;"), "you");
+      push(qa.youLabel, raw.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"), "you");
       var t = push(qa.botLabel, '<span class="dots"><i></i><i></i><i></i></span>', "bot");
       var html = reply(raw);
       setTimeout(function () { typeInto(t.querySelector(".msg__b"), html); }, reduce ? 0 : 400);
