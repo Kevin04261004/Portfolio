@@ -277,6 +277,18 @@
     return '<img class="pshot"' + attr("src", b.src) + attr("alt", b.alt) + ' loading="lazy">';
   };
 
+  /* A row of phone screenshots. A shot whose file is missing removes itself
+     rather than leaving a broken frame on the page. */
+  block.shots = function (b) {
+    return '<div class="shots">' + join(b.items, function (s) {
+      return "<figure>" +
+        "<img" + attr("src", s.src) + attr("alt", s.alt) + ' loading="lazy"' +
+        ' onerror="this.closest(\'figure\').remove()">' +
+        (s.cap ? "<figcaption>" + esc(s.cap) + "</figcaption>" : "") +
+        "</figure>";
+    }) + "</div>";
+  };
+
   block.links = function (b) { return linkRow(b.items, b.variant); };
 
   function linkRow(items, variant) {
