@@ -45,7 +45,7 @@
   function gameRow(g, i) {
     return '<button class="game' + (g.wip ? " game--wip" : "") + '" type="button"' +
       ' data-enter="' + esc(g.id) + '" data-slot="' + i + '">' +
-      '<span class="game__yr">' + esc(g.wip ? "NOW" : g.year) + "</span>" +
+      '<span class="game__yr">' + esc(g.year || (g.wip ? "NOW" : "")) + "</span>" +
       '<span class="game__t">' + esc(g.title) + "</span>" +
       '<span class="game__g">' + esc(g.genre) + "</span>" +
       '<span class="game__e">' + esc(engineOf(g.stack)) + "</span>" +
@@ -112,7 +112,8 @@
       }).join("") + "</div>" +
 
       (wip.length
-        ? '<h2 class="intro__sec">지금 만드는 중 <em>' + wip.length + "</em></h2>" +
+        ? '<h2 class="intro__sec">개인 개발 <em>' + wip.length + "</em>" +
+          '<small>상태는 각 줄 오른쪽에 적혀 있습니다</small></h2>' +
           '<div class="glist">' + wip.map(function (g) {
             return gameRow(g, reel.indexOf(g));
           }).join("") + "</div>"

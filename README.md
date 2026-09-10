@@ -23,7 +23,7 @@ assets/
   js/
     data/
       profile.js      이름 · 연락처 · 표지 문구
-      pages.js        18쪽 전체 내용 (블록 데이터)
+      pages.js        19쪽 전체 내용 (블록 데이터)
       qa.js           Q&A 응답기 지식베이스
     render.js         블록 → HTML + 게임 목록 집계 (레이아웃 무관)
     interactions.js   필터 · 상태머신 · 역량 미터 (레이아웃 무관)

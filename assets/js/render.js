@@ -126,7 +126,7 @@
         } else if (b.t === "vibe") {
           out.push({
             id: p.id, index: i, title: b.title, genre: b.genre,
-            year: "", period: "", duration: "",
+            year: b.year || "", period: "", duration: "",
             context: b.sub.replace(/^·\s*/, ""),
             stack: b.tags.slice(0, 2).join(" · "),
             roles: ["개인 개발"],
