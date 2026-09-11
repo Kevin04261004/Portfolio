@@ -274,6 +274,13 @@ PORTFOLIO.pages = [
       },
       {"t":"shot","src":"assets/img/project/bunny.jpg","alt":"버니 프로젝트 (Apocalypse) 스크린샷"},
       {
+        "t": "links",
+        "items": [
+          {"href":"https://www.youtube.com/watch?v=OkbLJylW4Js","external":true,"icon":"▶","text":"플레이 영상 보기"}
+        ],
+        "variant": "shot"
+      },
+      {
         "t": "blk",
         "h": "개요",
         "body": [
