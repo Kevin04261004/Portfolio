@@ -22,7 +22,7 @@ PORTFOLIO.profile = {
   /* keyed so a contact block can pick its own order per page */
   contact: {
     github:  { label: "GITHUB",  text: "Kevin04261004",        href: "https://github.com/Kevin04261004",        external: true },
-    youtube: { label: "YOUTUBE", text: "@kimdoyoon06",          href: "https://www.youtube.com/@kimdoyoon06",    external: true },
+    youtube: { label: "YOUTUBE", text: "@bugcollector0_0",    href: "https://www.youtube.com/@bugcollector0_0", external: true },
     mail:    { label: "MAIL",    text: "kdystudy0426@gmail.com", href: "mailto:kdystudy0426@gmail.com" },
     tel:     { label: "TEL",     text: "010-8867-6884",          href: "tel:01088676884" }
   },

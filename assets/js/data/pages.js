@@ -262,7 +262,6 @@ PORTFOLIO.pages = [
       {
         "t": "phead",
         "genre": "3D 액션",
-        "highlight": 493,
         "tags": [
           {"text":"TD","kind":"role"},
           {"text":"Unity 2022 LTS / FMOD"}
@@ -274,13 +273,6 @@ PORTFOLIO.pages = [
         "duration": "8개월"
       },
       {"t":"shot","src":"assets/img/project/bunny.jpg","alt":"버니 프로젝트 (Apocalypse) 스크린샷"},
-      {
-        "t": "links",
-        "items": [
-          {"href":"https://www.youtube.com/watch?v=9RQVzrtDPqA&t=493s","external":true,"icon":"▶","text":"플레이 영상 보기"}
-        ],
-        "variant": "shot"
-      },
       {
         "t": "blk",
         "h": "개요",
@@ -646,6 +638,7 @@ PORTFOLIO.pages = [
         "tags": ["TypeScript","Vite","Canvas 2D","Vitest","Firebase Auth · Firestore","GitHub Pages"],
         "links": [
           {"href":"https://kevin04261004.github.io/claude-code-game/","external":true,"icon":"▶","text":"게임 바로 플레이하기"},
+          {"href":"https://www.youtube.com/watch?v=PETrRqrZuAQ","external":true,"icon":"▶","text":"플레이 영상 보기","ghost":true},
           {"href":"https://github.com/Kevin04261004/claude-code-game","external":true,"icon":"❯","text":"코드 보기","ghost":true}
         ],
         "decs": [
@@ -705,6 +698,7 @@ PORTFOLIO.pages = [
         "tags": ["React","Next.js","Firebase","Vercel 배포","2인 공유 모델","기획 · 디자인 · 개발 · 운영 1인","Google Play 출시"],
         "links": [
           {"href":"https://play.google.com/store/apps/details?id=com.doyoon.lovememory","external":true,"icon":"▶","text":"구글 플레이에서 받기"},
+          {"href":"https://www.youtube.com/watch?v=WIhtwNLPAaQ","external":true,"icon":"▶","text":"소개 영상 보기","ghost":true},
           {"href":"https://couple-app-tau-rouge.vercel.app/","external":true,"icon":"❯","text":"웹에서 바로 써보기","ghost":true}
         ],
         "decs": [
