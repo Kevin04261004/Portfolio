@@ -142,6 +142,37 @@
     return out;
   }
 
+  /* ---------------------------------------------------------- thumbnails */
+  /* A project shows the thumbnail of its own play video, so the picture on
+     the page is the frame the author picked on YouTube rather than a grab
+     that drifts out of date. Not every video has every size and none of
+     them exist offline, so the img walks a list: best size first, then
+     smaller ones, and the screenshot committed to the repo last. */
+  var THUMB_SIZES = ["maxresdefault", "sddefault", "mqdefault"];
+
+  function ytId(href) {
+    var m = /youtube\.com\/watch\?v=([\w-]+)/.exec(href || "");
+    return m ? m[1] : null;
+  }
+
+  function thumbSrcs(id, local) {
+    var list = THUMB_SIZES.map(function (size) {
+      return "https://i.ytimg.com/vi/" + id + "/" + size + ".jpg";
+    });
+    if (local) list.push(local);
+    return list;
+  }
+
+  /* The chain is walked by the tag itself, so a layout gets it for free. */
+  var STEP_DOWN = ' onerror="var f=(this.getAttribute(\'data-fb\')||\'\').split(\'|\');' +
+    'if(!f[0])return;this.setAttribute(\'data-fb\',f.slice(1).join(\'|\'));this.src=f[0]"';
+
+  function picture(cls, srcs, alt) {
+    return "<img" + (cls ? ' class="' + cls + '"' : "") +
+      attr("src", srcs[0]) + attr("data-fb", srcs.slice(1).join("|")) +
+      attr("alt", alt) + ' loading="lazy"' + (srcs.length > 1 ? STEP_DOWN : "") + ">";
+  }
+
   /* Counts the entry screen quotes, derived rather than kept in sync by hand. */
   function tally() {
     var g = games(), roles = {};
@@ -273,8 +304,9 @@
       '<p class="phead__one">' + b.lead + "</p></div>";
   };
 
-  block.shot = function (b) {
-    return '<img class="pshot"' + attr("src", b.src) + attr("alt", b.alt) + ' loading="lazy">';
+  block.shot = function (b, page) {
+    var v = page && videoIn(page);
+    return picture("pshot", v ? thumbSrcs(v.id, b.src) : [b.src], b.alt);
   };
 
   /* A row of phone screenshots. A shot whose file is missing removes itself
@@ -347,7 +379,8 @@
     var lead = b.variant === "lead";
     return '<div class="grid' + (b.dense ? " grid--dense" : "") +
       (lead ? " grid--lead" : "") + '">' + join(b.items, function (c) {
-        var body = "<img" + attr("src", c.img) + attr("alt", c.alt) + ' loading="lazy">' +
+        var id = ytId(c.href);
+        var body = picture(null, id ? thumbSrcs(id, c.img) : [c.img], c.alt) +
           '<div class="card__in"><h3 class="card__t">' + esc(c.title) + "</h3>" +
           '<div class="card__s">' + esc(c.meta) + "</div>" +
           '<p class="card__d">' + c.desc + "</p>";
@@ -418,11 +451,11 @@
   block.raw = function (b) { return b.html; };
 
   /* ---------------------------------------------------------- public */
-  function renderBlocks(blocks) {
+  function renderBlocks(blocks, page) {
     return join(blocks, function (b) {
       var fn = block[b.t];
       if (!fn) throw new Error("render: unknown block type " + b.t);
-      return fn(b);
+      return fn(b, page);
     });
   }
 
@@ -443,7 +476,7 @@
           : "") + "</div>";
     }
 
-    var body = renderBlocks(page.blocks);
+    var body = renderBlocks(page.blocks, page);
     html += bare ? body : '<div class="pg__body">' + body + "</div>";
 
     if (opts.foot !== false) {

@@ -99,7 +99,7 @@ p.sub--note{margin:16px 0 0;font-size:12.5px}
 .phead__t{font-family:var(--serif);font-size:var(--pgTitle);font-weight:700;letter-spacing:-.035em;margin:0 0 5px;line-height:1.18}
 .phead__s{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
 .phead__one{font-size:13.5px;line-height:1.7;letter-spacing:-.018em;margin:12px 0 0}
-.pshot{width:100%;border:1px solid var(--line2);border-radius:3px;margin:16px 0 4px;filter:saturate(.92)}
+.pshot{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line2);border-radius:3px;margin:16px 0 4px;filter:saturate(.92)}
 /* phone screenshots — a row of tall frames, captioned underneath */
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:10px;margin:16px 0 6px}
 .shots:empty{display:none}
@@ -154,7 +154,7 @@ html[data-theme="night"] .blk li{color:#413526}
 .grid--dense .card__go{font-size:8.5px;margin-top:7px;padding:4px 8px}
 .card{display:block;text-decoration:none;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface2);transition:.2s}
 .card:hover{border-color:var(--signal);transform:translateY(-3px)}
-.card img{width:100%;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid var(--line);filter:saturate(.9)}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid var(--line);filter:saturate(.9)}
 .card__in{padding:11px 12px 13px}
 .card__t{font-size:12.5px;font-weight:700;letter-spacing:-.028em;margin:0 0 5px;line-height:1.32}
 .card__s{font-family:var(--mono);font-size:9px;color:var(--dim);letter-spacing:.02em;line-height:1.55;margin-bottom:7px}
