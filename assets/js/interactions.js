@@ -25,6 +25,37 @@
     });
   }
 
+  /* ---------------------------------------------------------- play */
+  /* A project picture swaps itself for the embed when clicked. One video
+     plays at a time, and a layout that moves a page out of view calls
+     closePlayers so a parked iframe cannot keep talking. Privacy-preserving
+     host, same as the entry screen. */
+  var EMBED = "https://www.youtube-nocookie.com/embed/";
+
+  function closePlayers(scope) {
+    [].forEach.call((scope || document).querySelectorAll(".pplay.is-live"), function (el) {
+      var f = el.querySelector(".pplay__v");
+      if (f) f.parentNode.removeChild(f);
+      el.classList.remove("is-live");
+    });
+  }
+
+  function openPlayer(btn) {
+    if (btn.classList.contains("is-live")) return;
+    closePlayers(document);
+    var f = document.createElement("iframe");
+    f.className = "pplay__v";
+    f.src = EMBED + encodeURIComponent(btn.dataset.video) +
+      "?autoplay=1&rel=0&modestbranding=1&playsinline=1" +
+      (btn.dataset.start ? "&start=" + encodeURIComponent(btn.dataset.start) : "");
+    f.title = btn.getAttribute("aria-label") || "플레이 영상";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    f.setAttribute("allowfullscreen", "");
+    btn.appendChild(f);
+    btn.classList.add("is-live");
+  }
+
   function shownCards(scope) {
     return [].slice.call(scope.querySelectorAll(".grid > .card"))
       .filter(function (c) { return c.style.display !== "none"; });
@@ -59,6 +90,13 @@
       if (opts.afterFilter) opts.afterFilter(wrap);
     });
 
+    root.addEventListener("click", function (e) {
+      var p = e.target.closest && e.target.closest(".pplay");
+      if (!p || p.classList.contains("is-live")) return;
+      e.preventDefault();
+      openPlayer(p);
+    });
+
     root.addEventListener("mouseover", function (e) {
       var n = e.target.closest && e.target.closest(".node");
       if (!n) return;
@@ -71,6 +109,7 @@
 
   P.interactions = {
     bind: bind,
+    closePlayers: closePlayers,
     litMeters: litMeters,
     animateMeters: animateMeters,
     shownCards: shownCards

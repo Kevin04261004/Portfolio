@@ -101,6 +101,15 @@ p.sub--note{margin:16px 0 0;font-size:12.5px}
 .phead__s{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
 .phead__one{font-size:13.5px;line-height:1.7;letter-spacing:-.018em;margin:12px 0 0}
 .pshot{width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line2);border-radius:3px;margin:16px 0 4px;filter:saturate(.92)}
+/* the picture is the play button; the embed takes its place on click */
+.pplay{position:relative;display:block;width:100%;margin:16px 0 4px;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer}
+.pplay .pshot{display:block;margin:0}
+.pplay__b{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:58px;height:40px;border-radius:9px;background:color-mix(in srgb,var(--signal) 88%,transparent);transition:transform .18s,background .18s}
+.pplay__b::after{content:"";display:block;border:9px solid transparent;border-left:14px solid var(--onSig);margin-left:6px}
+.pplay:hover .pplay__b,.pplay:focus-visible .pplay__b{transform:translate(-50%,-50%) scale(1.1);background:var(--signal)}
+.pplay:hover .pshot{filter:saturate(1)}
+.pplay.is-live .pshot,.pplay.is-live .pplay__b{display:none}
+.pplay__v{display:block;width:100%;aspect-ratio:16/9;border:1px solid var(--line2);border-radius:3px}
 /* phone screenshots — a row of tall frames, captioned underneath */
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(126px,1fr));gap:10px;margin:16px 0 6px}
 .shots:empty{display:none}

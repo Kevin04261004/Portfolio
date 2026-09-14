@@ -39,11 +39,13 @@
     book.classList.toggle("is-single", PP === 1);
     base = Math.floor(base / PP) * PP;
   }
-  function park(host) { var c = host.querySelector(".pg"); if (c) store.appendChild(c); }
+  /* a page leaving a slot takes any playing video with it */
+  function shelve(c) { if (!c) return; P.interactions.closePlayers(c); store.appendChild(c); }
+  function park(host) { shelve(host.querySelector(".pg")); }
   function put(host, i) {
     var c = host.querySelector(".pg");
     if (c === pages[i]) return;
-    if (c) store.appendChild(c);
+    shelve(c);
     if (i >= 0 && i < N) host.appendChild(pages[i]);
   }
   function litMeters(p, animate) {

@@ -320,9 +320,16 @@
       '<p class="phead__one">' + b.lead + "</p></div>";
   };
 
+  /* The picture is the play button. Clicking it swaps in the embed, so a
+     page needs no separate "watch" link — see withoutPlay below. */
   block.shot = function (b, page) {
     var v = page && videoIn(page);
-    return picture("pshot", v ? thumbSrcs(v.id, b.src) : [b.src], b.alt);
+    var img = picture("pshot", v ? thumbSrcs(v.id, b.src) : [b.src], b.alt);
+    if (!v) return img;
+    return '<button class="pplay" type="button"' +
+      attr("data-video", v.id) + attr("data-start", v.start || null) +
+      attr("aria-label", (b.alt || "플레이 영상") + " 재생") + ">" + img +
+      '<span class="pplay__b" aria-hidden="true"></span></button>';
   };
 
   /* A row of phone screenshots. A shot whose file is missing removes itself
@@ -337,7 +344,18 @@
     }) + "</div>";
   };
 
-  block.links = function (b) { return linkRow(b.items, b.variant); };
+  /* The video URL stays in the data — it feeds the thumbnail, the entry
+     screen and the inline player. It just is not drawn twice on one page. */
+  function withoutPlay(items, page) {
+    var v = page && videoIn(page);
+    if (!v) return items;
+    return items.filter(function (l) { return ytId(l.href) !== v.id; });
+  }
+
+  block.links = function (b, page) {
+    var items = withoutPlay(b.items, page);
+    return items.length ? linkRow(items, b.variant) : "";
+  };
 
   function linkRow(items, variant) {
     return '<div class="links' + (variant ? " links--" + variant : "") + '">' +
@@ -373,13 +391,13 @@
 
   block.decs = function (b) { return decs(b.items); };
 
-  block.vibe = function (b) {
+  block.vibe = function (b, page) {
     return '<div class="vibe">' +
       '<div class="vibe__bar"><b>' + esc(b.title) + "</b><span>" + esc(b.sub) + "</span>" +
       '<span class="vibe__st">' + esc(b.status) + "</span></div>" +
       '<div class="vibe__body"><div class="vibe__lead">' +
       join(b.lead, function (p) { return "<p>" + p + "</p>"; }) +
-      tags(b.tags, "pmeta--inline") + linkRow(b.links) + "</div>" +
+      tags(b.tags, "pmeta--inline") + linkRow(withoutPlay(b.links, page)) + "</div>" +
       decs(b.decs) + "</div>" +
       '<div class="vibe__foot">' + b.foot + "</div></div>";
   };
