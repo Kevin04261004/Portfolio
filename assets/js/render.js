@@ -163,9 +163,12 @@
     return list;
   }
 
-  /* The chain is walked by the tag itself, so a layout gets it for free. */
+  /* The chain is walked by the tag itself, so a layout gets it for free. A
+     picture that runs out of sources removes itself rather than leaving a
+     broken frame — the two vibe pages have no screenshot to fall back on. */
   var STEP_DOWN = ' onerror="var f=(this.getAttribute(\'data-fb\')||\'\').split(\'|\');' +
-    'if(!f[0])return;this.setAttribute(\'data-fb\',f.slice(1).join(\'|\'));this.src=f[0]"';
+    'if(!f[0]){this.remove();return}' +
+    'this.setAttribute(\'data-fb\',f.slice(1).join(\'|\'));this.src=f[0]"';
 
   function picture(cls, srcs, alt) {
     return "<img" + (cls ? ' class="' + cls + '"' : "") +
