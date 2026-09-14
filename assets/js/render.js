@@ -207,7 +207,7 @@
       '<div class="cover__role">' + esc(pr.role) + "</div>" +
       '<p class="cover__thesis">' + pr.thesis + "</p>" +
       '<div class="chips">' + join(pr.chips, function (c) {
-        return '<span class="chip">' + esc(c) + "</span>";
+        return '<span class="chip">' + esc(fill(c)) + "</span>";
       }) + "</div>" +
       contactList(contacts) +
       "</div>" +
@@ -230,9 +230,22 @@
   block.h3 = function (b) { return '<h3 class="h3">' + esc(b.text) + "</h3>"; };
   block.endmark = function (b) { return '<h2 class="endmark">' + esc(b.text) + "</h2>"; };
 
+  /* Numbers a writer would otherwise copy by hand. {{count}} is the page
+     count; {{team}}, {{solo}} and any role name ({{PD}}) come off the same
+     tally the entry screen uses, so a cover chip can claim "PD 5회" and
+     stay true when a project is added. */
+  function fill(s) {
+    return String(s).replace(/\{\{([^}]+)\}\}/g, function (m, key) {
+      if (key === "count") return D().count;
+      var t = tally();
+      if (t[key] != null) return t[key];
+      return t.roles[key] != null ? t.roles[key] : m;
+    });
+  }
+
   block.sub = function (b) {
     var cls = "sub" + (b.variant ? " sub--" + b.variant : "");
-    return '<p class="' + cls + '">' + b.html.replace(/\{\{count\}\}/g, D().count) + "</p>";
+    return '<p class="' + cls + '">' + fill(b.html) + "</p>";
   };
 
   block.toc = function () {

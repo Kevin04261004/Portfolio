@@ -12,12 +12,12 @@ PORTFOLIO.profile = {
   markLatin: "KEVIN KIM",
   runningFoot: "KIM DOYOON — PORTFOLIO",
 
-  eyebrow: "PORTFOLIO — GAME DEVELOPER &amp; TECHNICAL PM · 2023—2026",
-  role: "World Maker, Simulator Engineer",
+  eyebrow: "PORTFOLIO — GAME DEVELOPMENT PM · 2023—2026",
+  role: "개발PM — 만들 줄 아는 사람이 일정을 잡습니다",
   thesis: "<em>가상과 현실의 벽을 부수는 것</em>이 제 인생의 궁극적인 목표입니다.",
   photo: { src: "assets/img/profile.jpg", alt: "김도윤 프로필 사진" },
 
-  chips: ["#Develop PM", "#Engineer", "#Unreal", "#Unity", "#Network"],
+  chips: ["#개발PM", "#PD {{PD}}회", "#TD {{TD}}회", "#Unreal", "#Unity"],
 
   /* keyed so a contact block can pick its own order per page */
   contact: {

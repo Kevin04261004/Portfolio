@@ -1,6 +1,6 @@
 # Portfolio — 김도윤 (Kim Doyoon / Kevin Kim)
 
-게임 클라이언트 프로그래머 · 테크니컬 PM 포트폴리오.
+게임 개발PM 포트폴리오.
 
 - **책 레이아웃** — `index.html`
 - **문서 레이아웃** — `document.html`

@@ -96,6 +96,7 @@ p.sub--note{margin:16px 0 0;font-size:12.5px}
 .tag{font-family:var(--mono);font-size:9px;letter-spacing:.08em;padding:3px 7px;border-radius:3px;border:1px solid var(--line2);color:var(--dim)}
 .tag--role{color:var(--signal);border-color:color-mix(in srgb,var(--signal) 45%,transparent)}
 .tag--win{color:var(--onSig);background:var(--signal);border-color:var(--signal);font-weight:700}
+.tag--drop{color:var(--dim);border-style:dashed}
 .phead__t{font-family:var(--serif);font-size:var(--pgTitle);font-weight:700;letter-spacing:-.035em;margin:0 0 5px;line-height:1.18}
 .phead__s{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.05em}
 .phead__one{font-size:13.5px;line-height:1.7;letter-spacing:-.018em;margin:12px 0 0}
