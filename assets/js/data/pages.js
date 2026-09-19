@@ -593,16 +593,6 @@ PORTFOLIO.pages = [
       },
       {"t":"shot","alt":"러브 메모리 소개 영상"},
       {
-        "t": "shots",
-        "items": [
-          {"src":"assets/img/love-memory/calendar-month.jpg","alt":"러브 메모리 월 달력 화면","cap":"월 달력 — 날짜에 그날 사진이 깔리고, 여러 날 일정은 띠로 이어집니다"},
-          {"src":"assets/img/love-memory/day-sheet.jpg","alt":"러브 메모리 날짜 시트 화면","cap":"날짜 시트 — 사진, 기념일, 시간별 일정, 할 일이 한 화면에"},
-          {"src":"assets/img/love-memory/day-story.jpg","alt":"러브 메모리 이날의 이야기 화면","cap":"이날의 이야기 — 서로 남긴 말과 이모지 반응"},
-          {"src":"assets/img/love-memory/photo-detail.jpg","alt":"러브 메모리 사진 상세 화면","cap":"사진 상세 — 대표 지정, 반응과 댓글, 위치 추가"},
-          {"src":"assets/img/love-memory/settings-theme.jpg","alt":"러브 메모리 테마 설정 화면","cap":"테마 — 프리셋 8종과 다섯 색 직접 지정"}
-        ]
-      },
-      {
         "t": "vibe",
         "title": "러브 메모리",
         "sub": "· 연인이 함께 쓰는 캘린더",
