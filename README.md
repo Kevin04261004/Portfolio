@@ -1,172 +1,28 @@
-# Portfolio — 김도윤 (Kim Doyoon / Kevin Kim)
+# 김도윤 · 개발PM | 버그 콜렉터
 
-게임 개발PM 포트폴리오.
+A1 채용 브리핑 시안을 반영한 정적 포트폴리오. GitHub Pages에서 빌드 없이 제공합니다.
 
-- **책 레이아웃** — `index.html`
-- **문서 레이아웃** — `document.html`
+- `index.html`: 대표작 3개, 펼치는 사례 설명, 작업 기록 요약, 소개·연락처
+- `archive.html`: 기존 프로젝트 29개, 이름·기술 검색과 분류 필터
+- `document.html`: 기존 문서 링크를 새 메인으로 연결
+- `assets/css/portfolio.css`: 데스크톱·모바일·인쇄 스타일
+- `assets/js/portfolio.js`: YouTube 영상 창, 썸네일 대체 처리, 검색, 인쇄
+- `assets/img/brand/bug-collector.png`: 기존 버콜 캐릭터의 배경을 정리한 이미지
 
-두 페이지는 **완전히 같은 내용 파일**을 읽습니다. 문장을 한 번 고치면 양쪽에 동시에 반영됩니다.
+## 실행과 배포
 
-## 구조
+`python -m http.server 8765`로 로컬에서 확인합니다. main 브랜치의 루트 폴더를 GitHub Pages 게시 원본으로 사용합니다. 별도 서버나 API 키는 필요 없습니다.
 
-```
-index.html            책 레이아웃 (셸만 있음)
-document.html         문서 레이아웃 (한 페이지 스크롤)
+프로젝트 썸네일은 연결된 YouTube 영상의 `maxresdefault.jpg`를 사용합니다. 없는 경우 `hqdefault.jpg`, `mqdefault.jpg`, 기존 프로젝트 이미지 순으로 시도합니다. 모두 실패해도 영상 링크와 제목은 남습니다. JavaScript 없이도 영상 링크와 사례 상세를 사용할 수 있습니다.
 
-assets/
-  css/
-    tokens.css        색·서체·테마 변수          — 모든 레이아웃 공용
-    content.css       내용 자체의 스타일          — 모든 레이아웃 공용
-    intro.css         진입 화면 (이미지 없음)
-    book.css          책·페이지 넘김             — 책 전용
-    document.css      스크롤 문서 프레임          — 문서 전용
-  js/
-    data/
-      profile.js      이름 · 연락처 · 표지 문구
-      pages.js        19쪽 전체 내용 (블록 데이터)
-      qa.js           Q&A 응답기 지식베이스
-    render.js         블록 → HTML + 게임 목록 집계 (레이아웃 무관)
-    interactions.js   필터 · 상태머신 · 역량 미터 (레이아웃 무관)
-    ask.js            Q&A 응답기 동작 (레이아웃 무관)
-    intro.js          진입 화면 (레이아웃 무관, 어디든 mount 가능)
-    book.js           책 레이아웃 엔진
-    document.js       문서 레이아웃 엔진
-  img/                프로필 · 프로젝트 스크린샷 · 자격증 · 아이콘
-```
+썸네일 클릭 시 개인정보 보호 강화 도메인 `youtube-nocookie.com`의 영상 창이 열립니다. 닫기·Escape로 재생을 중지하며 YouTube 직접 링크도 제공합니다. 미마미 영상은 기존 링크의 329초 시작 위치를 유지합니다.
 
-## 진입 화면
+## 내용 기준
 
-첫 화면(`intro.js`)에는 **사진이나 그림이 하나도 없습니다.** 화면에 나오는
-유일한 그림은 게임이 실제로 돌아가는 영상입니다.
+대표작 순서: 러브 메모리 → 미마미 → 빛을 향해서. 상세는 문제·내 결정·결과와 구현 범위로 요약했습니다.
 
-- **들어가자마자 플레이 영상이 재생됩니다.** 브라우저가 소리 있는 자동재생을
-  막기 때문에 음소거로 시작하고, `🔇 소리 켜기` 버튼으로 켤 수 있습니다.
-- 13초마다 다음 게임 영상으로 넘어갑니다. `◀ ❚❚ ▶` 로 직접 조작할 수 있고,
-  목록에서 게임 이름 위에 올리면 그 영상으로 고정됩니다.
-- 각 영상은 저자가 링크에 적어둔 시점부터 시작합니다 (`&t=329s` → 미마미 5:29).
-- 게임 이름을 누르면 책이 그 프로젝트 쪽에서 열립니다. 이때 영상은 정지되고,
-  첫 화면으로 돌아오면 다시 재생됩니다.
-- `iframe`은 **하나만** 두고 `src`를 갈아끼웁니다(8개를 동시에 띄우지 않음).
-  개인정보 보호를 위해 `youtube-nocookie.com` 임베드를 씁니다.
-- `prefers-reduced-motion` 이면 자동재생과 자동 넘김을 하지 않습니다.
+미마미 작업 기록은 2024-10-19 본인 작성 「중간시연 이후 TODO」 및 「16팀 개발일정」의 본인 업무를 발췌 요약했습니다. 일정 양식을 팀 PM이 작성한 사실과 본인 기여를 구분합니다. 동료 실명·개별 평가 원문은 게시하지 않습니다. 확인되지 않은 정량 효과는 추가하지 않았습니다.
 
-영상 주소는 따로 적어두지 않습니다 — 각 프로젝트 쪽의 `links` 블록에 있는
-유튜브 링크를 그대로 씁니다. 목록과 상단 집계도 전부 `pages.js`에서 계산되므로,
-프로젝트를 추가하면 목록·영상 슬롯·집계가 함께 늘어납니다.
+취업 우선·졸업 목표를 반영하되 입사 및 학업 일정은 협의 대상으로 표기합니다. 기술 자기등급, 중복 회고, 혼동되는 기간 및 검증 조건 없는 수치 주장은 메인에서 제외했습니다.
 
-```js
-PORTFOLIO.render.games();   // 게임 목록 (연도·장르·엔진·역할·수상·영상)
-PORTFOLIO.render.tally();   // 건수 집계
-PORTFOLIO.intro.mount(el, { onEnter: id => open(id) });
-PORTFOLIO.intro.stop();     // 화면을 떠날 때 영상 정지
-PORTFOLIO.intro.start();
-```
-
-빌드 도구도 서버도 필요 없습니다. 일반 `<script>` 태그만 쓰기 때문에 파일을
-그냥 열어도(`file://`) 동작하고, GitHub Pages에도 그대로 올라갑니다.
-
-## 내용 고치기
-
-| 고치고 싶은 것 | 파일 |
-| --- | --- |
-| 이름, 연락처, 표지 문구 | `assets/js/data/profile.js` |
-| 각 쪽의 문장, 프로젝트 설명, 역량 수치 | `assets/js/data/pages.js` |
-| 진입 화면의 게임 장르 라벨 | `pages.js` 의 `phead.genre` |
-| Q&A 응답기가 답하는 내용 | `assets/js/data/qa.js` |
-| 이미지 | `assets/img/` 에 넣고 `pages.js`에서 경로만 지정 |
-| 프로젝트 그림 | 고치지 않아도 됩니다 — 아래 참고 |
-
-`pages.js`의 한 쪽은 **블록의 목록**입니다.
-
-```js
-{
-  id: "pr-mimami",
-  label: "팀 프로젝트",
-  title: "미마미",
-  chapter: "팀 프로젝트",
-  blocks: [
-    { t: "phead", genre: "스타일리쉬 액션", tags: [...], title: "미마미",
-      context: ["학기작 프로젝트", "스타일리쉬 액션"],
-      period: "2024.08 — 2024.12", duration: "15주", lead: "..." },
-    { t: "shot",  src: "assets/img/project/mimami.jpg", alt: "미마미 스크린샷" },
-    { t: "links", variant: "shot", items: [{ href: "...", icon: "▶", text: "플레이 영상 보기", external: true }] },
-    { t: "blk",   h: "개요", body: [{ k: "list", items: ["..."] }] }
-  ]
-}
-```
-
-쓸 수 있는 블록 종류: `cover` `h` `h3` `sub` `endmark` `toc` `hire` `ledger`
-`fsm` `phead` `shot` `links` `blk` `vibe` `decs` `filters` `cards` `skills`
-`certs` `ask` `contact` `credit` `raw`. 각 블록이 어떤 HTML이 되는지는
-`assets/js/render.js` 한 곳에만 있습니다.
-
-**목차, 상단 챕터 메뉴, 쪽 번호, `01 / 08` 같은 챕터 내 순번은 전부
-`pages.js`에서 자동 계산**됩니다. 쪽을 추가·삭제·재배치하면 알아서 맞춰집니다.
-
-## 프로젝트 그림
-
-`shot` 블록과 `cards` 카드의 그림은 **그 프로젝트 영상의 유튜브 썸네일**입니다.
-`pages.js`에 주소를 따로 적지 않습니다 — `shot`은 같은 쪽의 유튜브 링크에서,
-카드는 카드가 이미 걸고 있는 `href`에서 영상 번호를 뽑아 씁니다. 영상 썸네일을
-바꾸면 포트폴리오도 같이 바뀝니다.
-
-**`shot` 그림은 그 자체가 재생 버튼입니다.** 누르면 자리에서 영상이 재생됩니다
-(`youtube-nocookie.com` 임베드). 그래서 같은 쪽에 ‘플레이 영상 보기’ 버튼을
-따로 두지 않습니다 — `links`와 `vibe` 블록은 **그 쪽의 그림이 이미 재생하는
-영상과 같은 주소를 자동으로 빼고** 그립니다. 데이터에서 유튜브 링크를 지우지
-마십시오. 썸네일, 진입 화면 목록, 인라인 재생이 모두 그 한 줄에서 나옵니다.
-
-영상은 한 번에 하나만 재생되고, 쪽을 넘기면 정지합니다. 새 레이아웃이 쪽을
-화면 밖으로 치울 때는 `PORTFOLIO.interactions.closePlayers(el)` 을 불러 주세요.
-
-썸네일은 크기가 큰 것부터 차례로 시도하고, 마지막에 저장소에 있는 스크린샷으로
-내려옵니다.
-
-```
-maxresdefault.jpg → sddefault.jpg → mqdefault.jpg → pages.js 의 src
-```
-
-`maxresdefault`가 없는 영상이 있고(업로드 원본이 HD가 아니면 생기지 않습니다),
-인터넷이 없으면 셋 다 실패합니다. 그래서 `pages.js` 의 `src` 와 카드의 `img` 는
-**지우지 말고 그대로 두십시오.** 화면에 보이지 않을 뿐 마지막 대비책입니다.
-
-내려가는 동작은 `<img>` 태그 자신이 `data-fb` 목록을 훑으며 처리하므로, 새 레이아웃이
-따로 붙일 코드는 없습니다.
-
-## 레이아웃 추가하기
-
-새 레이아웃은 내용 파일 4개를 그대로 불러온 뒤, 원하는 방식으로 감싸기만 하면 됩니다.
-
-```html
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/content.css">
-<link rel="stylesheet" href="assets/css/my-layout.css">
-...
-<script src="assets/js/data/profile.js"></script>
-<script src="assets/js/data/pages.js"></script>
-<script src="assets/js/data/qa.js"></script>
-<script src="assets/js/render.js"></script>
-<script src="assets/js/interactions.js"></script>
-<script src="assets/js/ask.js"></script>
-```
-
-```js
-// 한 쪽 전체를 HTML로 (머리말·꼬리말 포함 여부 선택 가능)
-PORTFOLIO.render.page(page, { head: true, foot: false });
-
-// 내용 블록만
-PORTFOLIO.render.blocks(page.blocks);
-
-// 자동 계산된 챕터 목록 / 목차 / 쪽 정보
-PORTFOLIO.render.nav();
-PORTFOLIO.render.tocGroups();
-PORTFOLIO.render.deck();
-
-// 필터·상태머신 동작 연결 (goto는 레이아웃이 정의)
-PORTFOLIO.interactions.bind({ goto: id => scrollToSection(id) });
-
-// Q&A 블록이 있으면 붙이기
-PORTFOLIO.ask.mount(container);
-```
-
-`document.js`가 실제 예시입니다 — 레이아웃 코드는 약 40줄입니다.
+캐릭터: 내장 이미지 편집 기능으로 기존 캐릭터의 외형·포즈를 보존하고 체크무늬 배경만 제거했습니다. 편집 지시: “Preserve exact character identity, black hood, pointing hand, lime accents and sticker outline. Remove checkerboard; transparent background; no redesign.”
