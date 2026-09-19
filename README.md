@@ -26,3 +26,13 @@ A1 채용 브리핑 시안을 반영한 정적 포트폴리오. GitHub Pages에�
 취업 우선·졸업 목표를 반영하되 입사 및 학업 일정은 협의 대상으로 표기합니다. 기술 자기등급, 중복 회고, 혼동되는 기간 및 검증 조건 없는 수치 주장은 메인에서 제외했습니다.
 
 캐릭터: 내장 이미지 편집 기능으로 기존 캐릭터의 외형·포즈를 보존하고 체크무늬 배경만 제거했습니다. 편집 지시: “Preserve exact character identity, black hood, pointing hand, lime accents and sticker outline. Remove checkerboard; transparent background; no redesign.”
+
+## 대표 사례 상세
+
+첫 화면의 분량을 유지하면서 세부 판단·구현 범위를 별도 페이지에서 제공합니다.
+
+- `case-love-memory.html`: 제품 방향, 달력·공유·개인화 구현, 출시 과정
+- `case-pr-mimami.html`: 역할 구분, 실제 TODO와 일정표의 본인 작업, 기술 판단·회고
+- `case-pr-jam.html`: MVP 범위, 3+2일 개발 흐름, 분담과 직접 구현, 수상 근거
+
+미마미의 10월 19일 회의 기록을 PD 인수일로 혼동하지 않습니다. 회고로 재구성한 개발 흐름과 실제 당시 자료를 구분하고, 확인되지 않은 피드백 효과·성과 수치를 추가하지 않습니다.
