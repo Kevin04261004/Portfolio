@@ -13,7 +13,7 @@ PORTFOLIO.profile = {
   runningFoot: "KIM DOYOON — PORTFOLIO",
 
   eyebrow: "PORTFOLIO — GAME DEVELOPMENT PM · 2023—2026",
-  role: "개발PM — 만들 줄 아는 사람이 일정을 잡습니다",
+  role: "개발PM — 팀의 목표를 완성으로 이끌어냅니다",
   thesis: "<em>가상과 현실의 벽을 부수는 것</em>이 제 인생의 궁극적인 목표입니다.",
   photo: { src: "assets/img/profile.jpg", alt: "김도윤 프로필 사진" },
 
