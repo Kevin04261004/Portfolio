@@ -8,6 +8,7 @@ A1 채용 브리핑 시안을 반영한 정적 포트폴리오. GitHub Pages에�
 - `assets/css/portfolio.css`: 데스크톱·모바일·인쇄 스타일
 - `assets/js/portfolio.js`: YouTube 영상 창, 썸네일 대체 처리, 검색, 인쇄
 - `assets/img/brand/bug-collector.png`: 기존 버콜 캐릭터의 배경을 정리한 이미지
+- `assets/img/brand/bug-collector.webp`: 위 이미지와 픽셀이 같은 무손실 WebP. 메인 화면에서 먼저 쓰고, 미지원 브라우저·공유 미리보기는 PNG를 씁니다.
 
 ## 실행과 배포
 
