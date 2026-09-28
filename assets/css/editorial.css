@@ -6,3 +6,60 @@
 @media(max-width:900px){.refresh .container{padding-inline:28px}.refresh .header-inner{padding-inline:28px}.brand-stamp{width:180px}.brand-stamp img{width:170px;height:170px}.intro{padding-top:54px}.work-row{gap:28px;grid-template-columns:1.05fr 1fr}.work-copy h3{font-size:26px}.quick-facts{gap:20px}.quick-facts b{font-size:14px}.about-new{gap:36px}}
 @media(max-width:650px){.refresh .container{padding-inline:22px}.refresh .header-inner{padding:12px 22px;gap:10px}.refresh nav{gap:12px;font-size:12px}.refresh .brand-name{font-size:11px}.refresh .brand{font-size:24px}.intro{position:relative;padding:44px 0 32px;display:block}.intro .eyebrow{font-size:9px;letter-spacing:.08em}.intro h1{font-size:clamp(31px,8.3vw,48px)}.intro-line{font-size:14px;margin-top:20px}.intro-line br{display:none}.brand-stamp{position:absolute;bottom:22px;right:0;width:95px}.brand-stamp img{width:95px;height:95px}.brand-stamp>span{display:none}.intro .button{font-size:12px;padding:11px 15px;gap:15px}.quick-facts{gap:10px;justify-content:space-between;padding:18px 0;font-size:10px}.quick-facts b{display:block;margin:0 0 3px;font-size:13px}.refresh .section{padding-top:42px}.refresh h2{font-size:27px}.selected>.section-heading{margin-bottom:24px}.work-row{grid-template-columns:1fr;gap:20px;padding-bottom:30px;margin-bottom:32px}.image-caption{font-size:10px}.work-copy h3{font-size:27px}.work-description{font-size:14px;margin-top:14px;max-width:none}.outcome{font-size:11px;margin-top:14px}.work-copy .eyebrow{font-size:10px}.work-copy .study-link{margin-top:6px}.method-grid{grid-template-columns:1fr;gap:24px;margin-top:24px}.method-grid h3{font-size:20px;margin:8px 0}.about-new{grid-template-columns:1fr;gap:30px;margin-top:42px}.availability{padding:24px;margin-top:32px}.availability h2{font-size:21px}.availability p{font-size:13px}.refresh .contact{padding-top:32px;margin-top:32px}.refresh .contact h2{font-size:27px}.refresh .contact-mail{font-size:clamp(16px,4.7vw,23px)}.case-hero{padding-top:30px}.case-hero h1{font-size:33px}.case-name{font-size:15px}.case-lead{font-size:14px}.case-lead br{display:none}.metric-row{gap:10px;margin-top:24px;padding:16px 0}.metric-row dt{font-size:10px}.metric-row dd{font-size:15px}.case-section{padding:32px 0}.case-section h2{font-size:25px}.case-section .decision-grid{grid-template-columns:1fr}.case-section .decision-grid article{padding:20px}.case-section .decision-grid p{font-size:14px}.video-pair{grid-template-columns:1fr;gap:20px}.schedule{grid-template-columns:1fr}.schedule article{padding:22px}.schedule h3{font-size:22px}.release-steps{grid-template-columns:1fr 1fr}.section-copy{font-size:14px}.record-excerpts>div{grid-template-columns:1fr;gap:5px}.skill-list span{font-size:12px}.source-details summary{font-size:12px}}
 @media print{@page{size:A4;margin:14mm}.refresh{background:#fff;font-size:10pt}.refresh .container{max-width:none;padding:0}.refresh .header,.refresh .button,.refresh .study-link,.refresh .text-link,.refresh .play,.refresh .watch,.refresh .back-link,.refresh .source-details,.refresh .study-nav,.refresh .contact-links button{display:none!important}.refresh .video-preview:after{content:none!important}.refresh a[href^='http']:after{content:none}.intro{padding:0 0 18px;display:flex}.intro h1{font-size:30px}.intro .eyebrow{font-size:8px}.intro-line{font-size:11px;margin-top:12px}.brand-stamp{position:static;width:100px}.brand-stamp img{width:100px;height:100px}.brand-stamp>span{display:none}.quick-facts{display:flex;padding:12px 0;gap:24px}.quick-facts b{font-size:12px;display:inline}.quick-facts span{font-size:10px}.refresh .section{padding-top:24px}.refresh h2{font-size:22px}.selected>.section-heading{margin-bottom:20px}.work-row{display:grid;grid-template-columns:1fr 1fr;gap:22px;padding-bottom:20px;margin-bottom:20px;break-inside:avoid}.refresh .video-preview{max-width:none}.work-copy h3{font-size:21px}.work-description{font-size:10px;margin-top:8px}.work-name{font-size:11px;margin-bottom:4px}.work-copy .eyebrow{font-size:8px;margin-bottom:6px}.outcome,.image-caption{font-size:8px}.outcome{margin-top:9px}.method,.about-new,.availability,.contact{break-inside:avoid}.method-grid{grid-template-columns:repeat(3,1fr);gap:18px;margin-top:20px}.method-grid h3{font-size:15px}.method-grid p{font-size:10px}.about-new{grid-template-columns:1fr 1.2fr;margin-top:24px;gap:24px}.about-new>div>p:not(.eyebrow){font-size:10px;margin:14px 0}.profile-facts>div{padding:10px 0;font-size:10px;grid-template-columns:60px 1fr;gap:10px}.profile-facts span{font-size:9px}.availability{margin-top:24px;padding:18px}.availability h2{font-size:18px}.availability p{font-size:11px}.refresh .contact{margin-top:24px;padding-top:20px}.refresh .contact h2{font-size:22px}.refresh .contact-mail{font-size:17px}.refresh .footer{margin-top:15px}.case-hero{padding-top:0}.case-hero h1{font-size:30px}.case-lead{font-size:11px}.metric-row dd{font-size:17px}.case-page main>.video-preview{max-width:480px}.case-section{padding:24px 0;break-inside:avoid}.case-section h2{font-size:23px}.case-section .decision-grid{grid-template-columns:repeat(2,1fr)}.case-section .decision-grid p,.section-copy{font-size:11px}.video-pair{grid-template-columns:1fr 1fr}.schedule{grid-template-columns:3fr 2fr}.release-steps{grid-template-columns:repeat(4,1fr)}.schedule p{font-size:11px}.skill-list span{font-size:10px}}
+
+/* Align neighbouring cards by label, title and body, even when text wraps. */
+.refresh .work-row{align-items:start}
+.refresh .work-media,.refresh .work-copy{min-width:0}
+.refresh .work-copy h3{font-size:28px;line-height:1.5;margin:0;overflow-wrap:break-word}
+.refresh .work-description{max-width:none}
+.refresh .method-grid{column-gap:24px;row-gap:12px;align-items:stretch}
+.refresh .method-grid>article{display:grid;grid-template-rows:auto minmax(3em,auto) 1fr;gap:12px;padding-top:20px;padding-bottom:20px;min-width:0;align-content:start}
+.refresh .method-grid>article>span{font-size:11px;line-height:1.5}
+.refresh .method-grid h3{font-size:20px;line-height:1.5;margin:0}
+.refresh .method-grid p{font-size:15px;line-height:1.8;margin:0}
+.refresh .case-section .decision-grid{column-gap:20px;row-gap:12px;align-items:stretch}
+.refresh .case-section .decision-grid>article{display:grid;grid-template-rows:minmax(3em,auto) 1fr;gap:12px;min-width:0;padding:24px;align-content:start}
+.refresh .case-section .decision-grid h3{font-size:20px;line-height:1.5;margin:0}
+.refresh .case-section .decision-grid p{font-size:15px;line-height:1.8;margin:0}
+.refresh .metric-row{column-gap:20px;row-gap:8px;align-items:stretch}
+.refresh .metric-row>div{display:grid;grid-template-rows:auto 1fr;gap:8px;min-width:0;align-content:start}
+.refresh .metric-row dt{font-size:12px;line-height:1.5;margin:0}
+.refresh .metric-row dd{font-size:20px;line-height:1.5;margin:0}
+.refresh .schedule{column-gap:4px;row-gap:12px}
+.refresh .schedule>article{display:grid;grid-template-rows:auto minmax(3em,auto) 1fr;gap:12px;min-width:0;align-content:start}
+.refresh .schedule span{line-height:1.5}
+.refresh .schedule h3{font-size:22px;line-height:1.5;margin:0}
+.refresh .schedule p{font-size:15px;line-height:1.8;margin:0}
+.refresh .skill-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.refresh .skill-list>span{display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;line-height:1.6;padding:14px;min-width:0}
+@supports(grid-template-rows:subgrid){
+ .refresh .method-grid>article,.refresh .schedule>article{grid-row:span 3;grid-template-rows:subgrid}
+ .refresh .case-section .decision-grid>article,.refresh .metric-row>div{grid-row:span 2;grid-template-rows:subgrid}
+}
+@media screen and (min-width:651px) and (max-width:900px){
+ .refresh .work-copy h3{font-size:24px}
+ .refresh .method-grid{column-gap:18px}
+}
+@media screen and (max-width:650px){
+ .refresh .work-copy h3{font-size:24px;line-height:1.5}
+ .refresh .work-copy h3 br{display:none}
+ .refresh .method-grid,.refresh .case-section .decision-grid{row-gap:20px}
+ .refresh .method-grid>article,.refresh .schedule>article{grid-row:auto;grid-template-rows:auto auto auto;gap:10px}
+ .refresh .case-section .decision-grid>article{grid-row:auto;grid-template-rows:auto auto;gap:12px;padding:20px}
+ .refresh .method-grid h3,.refresh .case-section .decision-grid h3,.refresh .schedule h3{font-size:20px;line-height:1.5}
+ .refresh .method-grid p,.refresh .case-section .decision-grid p,.refresh .schedule p{font-size:14px;line-height:1.8}
+ .refresh .metric-row{column-gap:12px}
+ .refresh .metric-row dt{font-size:11px}
+ .refresh .metric-row dd{font-size:16px}
+ .refresh .skill-list{grid-template-columns:1fr;gap:8px}
+ .refresh .skill-list>span{justify-content:flex-start;text-align:left;font-size:14px}
+ .refresh .schedule{row-gap:4px}
+}
+@media print{
+ .refresh .work-copy h3{font-size:21px}
+ .refresh .method-grid h3,.refresh .case-section .decision-grid h3,.refresh .schedule h3{font-size:15px}
+ .refresh .method-grid p,.refresh .case-section .decision-grid p,.refresh .schedule p{font-size:11px}
+ .refresh .method-grid>article{padding-block:12px}
+ .refresh .metric-row dd{font-size:17px}
+ .refresh .skill-list>span{font-size:10px}
+}
