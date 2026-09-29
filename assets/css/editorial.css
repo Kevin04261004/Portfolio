@@ -42,7 +42,6 @@
 }
 @media screen and (max-width:650px){
  .refresh .work-copy h3{font-size:24px;line-height:1.5}
- .refresh .work-copy h3 br{display:none}
  .refresh .method-grid,.refresh .case-section .decision-grid{row-gap:20px}
  .refresh .method-grid>article,.refresh .schedule>article{grid-row:auto;grid-template-rows:auto auto auto;gap:10px}
  .refresh .case-section .decision-grid>article{grid-row:auto;grid-template-rows:auto auto;gap:12px;padding:20px}
