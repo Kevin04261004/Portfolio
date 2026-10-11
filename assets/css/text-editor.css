@@ -1,0 +1,15 @@
+.editor-launch { position:fixed; right:20px; bottom:20px; z-index:100; border:1px solid #ddd; border-radius:999px; background:#fff; color:#222; padding:10px 18px; cursor:pointer; box-shadow:0 3px 16px #0001; font:inherit; font-size:13px; }
+.editor-toolbar { position:fixed; bottom:16px; left:50%; transform:translateX(-50%); z-index:101; display:flex; align-items:center; flex-wrap:wrap; justify-content:center; gap:8px; width:max-content; max-width:calc(100% - 24px); padding:12px 16px; border:1px solid #ddd; border-radius:16px; background:#fff; box-shadow:0 6px 30px #0002; font-size:13px; }
+.editor-toolbar[hidden], .editor-launch[hidden] { display:none; }
+.editor-toolbar button, .editor-message button { padding:8px 12px; border:1px solid #ddd; border-radius:8px; background:#fff; color:#222; font:inherit; cursor:pointer; }
+.editor-toolbar .editor-save { background:#222; color:#fff; border-color:#222; }
+.editor-toolbar button:disabled { opacity:.45; cursor:default; }
+.editor-status { min-width:100px; max-width:360px; }
+.editor-active [data-edit-id] { outline:1px dashed #aaa; outline-offset:3px; cursor:text; border-radius:2px; white-space:pre-wrap; }
+.editor-active [data-edit-id]:focus { outline:2px solid #2669df; background:#edf4ff; }
+.editor-active [data-edit-id]:empty::before { content:'문장 입력'; color:#777; }
+.editor-active { padding-bottom:100px; }
+.editor-message { max-width:420px; width:calc(100% - 40px); padding:24px; border:1px solid #ddd; border-radius:16px; color:#222; background:#fff; }
+.editor-message::backdrop { background:#0005; }
+.editor-message p { line-height:1.7; margin:0 0 18px; }
+@media print { .editor-launch, .editor-toolbar, .editor-message { display:none !important; } .editor-active [data-edit-id] { outline:none; background:transparent; } }
