@@ -13,3 +13,7 @@
 .editor-message::backdrop { background:#0005; }
 .editor-message p { line-height:1.7; margin:0 0 18px; }
 @media print { .editor-launch, .editor-toolbar, .editor-message { display:none !important; } .editor-active [data-edit-id] { outline:none; background:transparent; } }
+
+.editor-message label { display:block; font-weight:600; margin-bottom:12px; }
+.editor-message input { display:block; box-sizing:border-box; width:100%; padding:12px; margin-bottom:16px; border:1px solid #bbb; border-radius:8px; font:inherit; }
+.editor-message form button + button { margin-left:8px; }

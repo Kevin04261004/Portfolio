@@ -4,8 +4,7 @@ service cloud.firestore {
     function owner() {
       return request.auth != null
         && request.auth.token.email == 'kdystudy0426@gmail.com'
-        && request.auth.token.email_verified == true
-        && request.auth.token.firebase.sign_in_provider == 'google.com';
+        && request.auth.token.firebase.sign_in_provider == 'password';
     }
     function validPage(page) {
       return page in ['index.html', 'archive.html', 'case-love-memory.html',

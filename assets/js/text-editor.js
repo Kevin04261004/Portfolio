@@ -60,28 +60,49 @@ async function initialize() {
   auth = sdk.getAuth(app); db = sdk.getFirestore(app); ref = sdk.doc(db, 'portfolioPages', PAGE);
   sdk.onAuthStateChanged(auth, current => {
     user = current;
-    if (active && (current?.email !== OWNER || !current.emailVerified)) { apply(); mode(false); }
+    if (active && (current?.email !== OWNER)) { apply(); mode(false); }
   });
   await refresh();
 }
 const initialization = initialize().catch(() => { launch.title = '저장된 문장을 불러오지 못했습니다. 다시 시도하세요.'; });
+function askPassword() {
+  return new Promise(resolve => {
+    const dialog = document.createElement('dialog'); dialog.className = 'editor-message';
+    const form = document.createElement('form');
+    const label = document.createElement('label'); label.textContent = '편집 비밀번호';
+    const input = document.createElement('input');
+    input.type = 'password'; input.autocomplete = 'current-password'; input.required = true;
+    input.id = 'editor-password'; label.htmlFor = input.id;
+    const submit = button('로그인'); submit.type = 'submit';
+    const dismiss = button('취소'); dismiss.onclick = () => dialog.close();
+    form.append(label, input, submit, dismiss); dialog.append(form); document.body.append(dialog);
+    let password = null;
+    form.onsubmit = event => { event.preventDefault(); password = input.value; input.value = ''; dialog.close(); };
+    dialog.addEventListener('close', () => { input.value = ''; dialog.remove(); resolve(password); }, { once: true });
+    dialog.showModal(); input.focus();
+  });
+}
 launch.onclick = async () => {
   if (busy) return;
-  if (!firebaseConfig?.apiKey) { notice('문장 편집 기능을 연결하는 중입니다. 연결이 완료되면 구글 계정으로 로그인해 수정할 수 있습니다.'); return; }
+  if (!firebaseConfig?.apiKey) { notice('문장 편집 기능을 연결하는 중입니다. 연결이 완료되면 비밀번호로 수정할 수 있습니다.'); return; }
   busy = true; launch.disabled = true;
   try {
     await initialization;
     if (!sdk) throw new Error('setup');
-    const provider = new sdk.GoogleAuthProvider(); provider.setCustomParameters({ prompt: 'select_account', login_hint: OWNER });
-    const result = await sdk.signInWithPopup(auth, provider);
+    let password = await askPassword();
+    if (password === null) return;
+    let result;
+    try { result = await sdk.signInWithEmailAndPassword(auth, OWNER, password); }
+    finally { password = null; }
     const token = await result.user.getIdTokenResult();
-    if (result.user.email !== OWNER || !result.user.emailVerified || token.signInProvider !== 'google.com') {
-      await sdk.signOut(auth); notice('수정 권한이 없는 계정입니다. 지정한 구글 계정으로 로그인해 주세요.'); return;
+    if (result.user.email !== OWNER || token.signInProvider !== 'password') {
+      await sdk.signOut(auth); notice('수정 권한이 없는 계정입니다.'); return;
     }
     user = result.user;
     await refresh(); mode(true);
   } catch (error) {
-    if (error.code !== 'auth/popup-closed-by-user') notice('로그인 또는 저장소 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+    const credentialErrors = ['auth/invalid-credential', 'auth/wrong-password', 'auth/user-not-found', 'auth/invalid-login-credentials'];
+    notice(credentialErrors.includes(error.code) ? '비밀번호를 확인해 주세요.' : error.code === 'auth/too-many-requests' ? '로그인 시도가 많습니다. 잠시 후 다시 시도해 주세요.' : '로그인 또는 저장소 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.');
   } finally { busy = false; launch.disabled = false; controls(); }
 };
 for (const el of fields.values()) {
