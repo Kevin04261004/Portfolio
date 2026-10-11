@@ -44,22 +44,12 @@
 화면 오른쪽 아래 **문장 수정** → 비밀번호 입력 → 문장 클릭 → **저장**.
 메인, 아카이브, 상세 사례 5개 페이지에서 제목·본문·목록·표·링크의 표시 문구를 수정합니다. 이미지, 링크 주소, 레이아웃은 유지합니다. 각 페이지에서 따로 저장하며 Ctrl/Cmd+S도 지원합니다. Shift+Enter로 줄바꿈합니다.
 
-수정 문장은 Firestore에 저장되어 다른 기기와 공개 방문자에게도 적용됩니다. 편집 취소, 로그아웃, 저장 전 이동 경고, 다른 창의 수정 충돌 방지가 포함됩니다. 원본 HTML은 초기 문장으로 유지됩니다. 검색엔진/소셜 미리보기의 원본 메타데이터는 별도로 수정해야 합니다.
+수정 문장은 별도 저장 서버에 보관되어 다른 기기와 공개 방문자에게도 적용됩니다. 편집 취소, 로그아웃, 저장 전 이동 경고, 다른 창의 수정 충돌 방지를 지원합니다. 원본 HTML은 초기 문장으로 유지되며 검색엔진/소셜 미리보기의 메타데이터는 별도로 수정해야 합니다.
 
-### 최초 연결 (필수)
-
-현재 `assets/js/editor-config.js`는 비어 있습니다. 아래 연결 전에는 로그인·공유 저장이 활성화되지 않습니다. 로그인 흉내나 브라우저에만 저장하는 기능은 사용하지 않습니다.
-
-1. Firebase Console에서 포트폴리오 전용 프로젝트를 만들거나 사용할 프로젝트를 선택합니다.
-2. 프로젝트 설정 → 웹 앱 등록 → 표시된 `firebaseConfig` 객체를 `assets/js/editor-config.js`의 `null` 대신 넣습니다. 웹 설정 값은 공개용입니다. 서비스 계정 비밀키는 넣지 않습니다.
-3. Authentication → Sign-in method → **Email/Password**를 활성화합니다. **설정 파일을 공개하기 전에** Users → Add user에서 `kdystudy0426@gmail.com` 계정을 만들고 사용자가 지정한 편집 비밀번호를 설정합니다. 기존 Google 계정이 있다면 같은 UID에 비밀번호 공급자를 연결합니다. 비밀번호는 Firebase Console에서만 설정하며 GitHub 파일에 넣지 않습니다. Authorized domains에 **kevin04261004.github.io**를 추가합니다.
-4. Cloud Firestore를 **프로덕션 모드**로 생성합니다. Rules에 저장소의 `firestore.rules` 전체 내용을 붙여넣고 **Publish**합니다. 또는 인증된 Firebase CLI에서 `firebase deploy --only firestore:rules --project 실제프로젝트ID`를 실행합니다.
-5. 설정 파일을 main에 반영한 뒤 공개 페이지에서 지정한 비밀번호로 로그인합니다. 문장을 수정·저장하고, 시크릿 창 및 다른 기기에서 저장한 문장이 보이는지 확인합니다.
-
-**권한 확인:** 비로그인/다른 계정의 직접 쓰기 요청도 Firestore 규칙에서 거부됩니다. 사전에 생성한 관리자 계정의 이메일 및 비밀번호 로그인 공급자를 검사하며 삭제와 목록 조회는 금지합니다. 규칙을 테스트 모드로 바꾸면 안 됩니다.
-
-**확인 항목:** 지정 계정 저장 성공, 다른 계정 저장 거부, 비로그인 쓰기 거부, 취소 시 복구, 새로고침 후 유지, 두 창 저장 충돌 시 덮어쓰기 거부.
-
-`data-edit-id`는 저장된 문장 식별자입니다. HTML을 수정할 때 기존 ID를 유지하고 새 문장에는 새 ID를 부여합니다. `scripts/mark-editable.py`는 초기 마킹용이며 이미 편집기가 연결된 페이지는 다시 처리하지 않습니다.
-
-공식 문서: https://firebase.google.com/docs/auth/web/password-auth · https://firebase.google.com/docs/firestore/security/get-started
+- 서버: `https://portfolio-editor-api.kdystudy0426.chatgpt.site`
+- 데이터: D1, 페이지별 문장 및 버전 저장
+- 인증: 서버 비밀 설정 `EDITOR_PASSWORD`로 확인, 1시간 유효 세션, IP별 로그인 시도 제한
+- 비밀번호와 세션 원문은 GitHub나 브라우저 저장소에 보관하지 않습니다.
+- 비밀번호 변경은 저장 서버의 비밀 설정을 변경한 뒤 재배포합니다.
+- `data-edit-id`는 저장된 문장 식별자이므로 기존 ID를 유지합니다. 새 문장을 추가하면 서버의 허용 필드 목록도 함께 갱신합니다.
+- Firebase 설정은 필요하지 않습니다.

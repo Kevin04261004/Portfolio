@@ -1,6 +1,4 @@
-import { firebaseConfig } from './editor-config.js';
-
-const OWNER = 'kdystudy0426@gmail.com';
+const API = 'https://portfolio-editor-api.kdystudy0426.chatgpt.site/api';
 const PAGE = location.pathname.split('/').pop() || 'index.html';
 const fields = new Map([...document.querySelectorAll('[data-edit-id]')].map(el => [el.dataset.editId, el]));
 const defaults = Object.fromEntries([...fields].map(([id, el]) => [id, el.textContent]));
@@ -16,7 +14,14 @@ function button(label, className = '') {
 }
 const save = button('저장', 'editor-save'), cancel = button('취소'), logout = button('로그아웃');
 toolbar.append(status, save, cancel, logout); document.body.append(launch, toolbar);
-let sdk, auth, db, ref, user, loaded = {}, revision = 0, active = false, busy = false, ready = false;
+let token = null, loaded = {}, revision = 0, active = false, busy = false, ready = false;
+async function api(path, options = {}) {
+  const response = await fetch(API + path, { ...options, cache: 'no-store', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}), ...options.headers } });
+  const data = await response.json();
+  if (!response.ok) { const error = new Error(data.error || 'request_failed'); error.status = response.status; throw error; }
+  return data;
+}
+const links = new Map([...document.querySelectorAll('a[href]')].filter(el => el.querySelector('[data-edit-id]')).map(el => [el, el.getAttribute('href')]));
 const values = () => Object.fromEntries([...fields].map(([id, el]) => [id, el.textContent]));
 const baseline = () => Object.fromEntries([...fields].map(([id]) => [id, typeof loaded[id] === 'string' ? loaded[id] : defaults[id]]));
 function dirty() { const base = baseline(); return [...fields].some(([id, el]) => el.textContent !== base[id]); }
@@ -35,6 +40,7 @@ function controls(message) {
 function mode(enabled) {
   active = enabled; document.body.classList.toggle('editor-active', enabled);
   toolbar.hidden = !enabled; launch.hidden = enabled;
+  for (const [link, href] of links) { if (enabled) link.removeAttribute('href'); else link.setAttribute('href', href); }
   for (const el of fields.values()) {
     if (enabled) { el.setAttribute('contenteditable', 'plaintext-only'); el.setAttribute('spellcheck', 'false'); }
     else { el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); }
@@ -42,29 +48,12 @@ function mode(enabled) {
   if (enabled) controls('문장을 눌러 수정하세요.');
 }
 async function refresh() {
-  const snapshot = await sdk.getDocFromServer(ref);
-  const data = snapshot.exists() ? snapshot.data() : {};
+  const data = await api('/content?page=' + encodeURIComponent(PAGE));
   loaded = data.texts && typeof data.texts === 'object' ? data.texts : {};
   revision = Number.isInteger(data.revision) ? data.revision : 0;
   apply(); ready = true;
 }
-async function initialize() {
-  if (!firebaseConfig?.apiKey || !firebaseConfig?.projectId || !firebaseConfig?.authDomain) return;
-  const [appSDK, authSDK, storeSDK] = await Promise.all([
-    import('https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js'),
-    import('https://www.gstatic.com/firebasejs/12.4.0/firebase-auth.js'),
-    import('https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js')
-  ]);
-  sdk = { ...authSDK, ...storeSDK };
-  const app = appSDK.initializeApp(firebaseConfig);
-  auth = sdk.getAuth(app); db = sdk.getFirestore(app); ref = sdk.doc(db, 'portfolioPages', PAGE);
-  sdk.onAuthStateChanged(auth, current => {
-    user = current;
-    if (active && (current?.email !== OWNER)) { apply(); mode(false); }
-  });
-  await refresh();
-}
-const initialization = initialize().catch(() => { launch.title = '저장된 문장을 불러오지 못했습니다. 다시 시도하세요.'; });
+const initialization = refresh().catch(() => { launch.title = '저장된 문장을 불러오지 못했습니다. 다시 시도하세요.'; });
 function askPassword() {
   return new Promise(resolve => {
     const dialog = document.createElement('dialog'); dialog.className = 'editor-message';
@@ -84,25 +73,16 @@ function askPassword() {
 }
 launch.onclick = async () => {
   if (busy) return;
-  if (!firebaseConfig?.apiKey) { notice('문장 편집 기능을 연결하는 중입니다. 연결이 완료되면 비밀번호로 수정할 수 있습니다.'); return; }
   busy = true; launch.disabled = true;
   try {
     await initialization;
-    if (!sdk) throw new Error('setup');
     let password = await askPassword();
     if (password === null) return;
-    let result;
-    try { result = await sdk.signInWithEmailAndPassword(auth, OWNER, password); }
+    try { token = (await api('/login', { method: 'POST', body: JSON.stringify({ password }) })).token; }
     finally { password = null; }
-    const token = await result.user.getIdTokenResult();
-    if (result.user.email !== OWNER || token.signInProvider !== 'password') {
-      await sdk.signOut(auth); notice('수정 권한이 없는 계정입니다.'); return;
-    }
-    user = result.user;
     await refresh(); mode(true);
   } catch (error) {
-    const credentialErrors = ['auth/invalid-credential', 'auth/wrong-password', 'auth/user-not-found', 'auth/invalid-login-credentials'];
-    notice(credentialErrors.includes(error.code) ? '비밀번호를 확인해 주세요.' : error.code === 'auth/too-many-requests' ? '로그인 시도가 많습니다. 잠시 후 다시 시도해 주세요.' : '로그인 또는 저장소 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.');
+    notice(error.status === 401 ? '비밀번호를 확인해 주세요.' : error.status === 429 ? '로그인 시도가 많습니다. 15분 후 다시 시도해 주세요.' : '저장 서버에 연결하지 못했습니다. 잠시 후 다시 시도해 주세요.');
   } finally { busy = false; launch.disabled = false; controls(); }
 };
 for (const el of fields.values()) {
@@ -115,28 +95,23 @@ for (const el of fields.values()) {
 }
 // Prevent existing navigation/video handlers while editing links.
 document.addEventListener('click', event => {
-  if (active && event.target.closest('[data-edit-id]')) { event.preventDefault(); event.stopImmediatePropagation(); }
+  if (active && event.target.closest('[data-edit-id]')) { event.stopImmediatePropagation(); }
 }, true);
 document.addEventListener('keydown', event => {
   if (active && (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); if (!save.disabled) save.click(); }
   if (active && event.target.closest('[data-edit-id]') && event.key === 'Enter' && !event.shiftKey) { event.preventDefault(); event.target.blur(); }
 }, true);
 save.onclick = async () => {
-  if (busy || !active || !ready || !dirty() || user?.email !== OWNER) return;
+  if (busy || !active || !ready || !dirty() || !token) return;
   const current = values();
   if (Object.values(current).some(text => text.length > 10000)) { controls('문장 하나는 10,000자 이내로 입력하세요.'); return; }
   const texts = Object.fromEntries(Object.entries(current).filter(([id, text]) => text !== defaults[id]));
   busy = true; controls('저장 중…');
   try {
-    await sdk.runTransaction(db, async transaction => {
-      const snapshot = await transaction.get(ref);
-      const latest = snapshot.exists() ? snapshot.data().revision : 0;
-      if (latest !== revision) throw new Error('conflict');
-      transaction.set(ref, { texts, revision: revision + 1, updatedAt: sdk.serverTimestamp() });
-    });
-    loaded = texts; revision++; status.textContent = '저장 완료';
+    const result = await api('/content', { method: 'PUT', body: JSON.stringify({ page: PAGE, texts, revision }) });
+    loaded = texts; revision = result.revision; status.textContent = '저장 완료';
   } catch (error) {
-    status.textContent = error.message === 'conflict'
+    status.textContent = error.status === 401 ? '로그인이 만료됐습니다. 수정 내용을 복사한 후 다시 로그인해 주세요.' : error.message === 'conflict'
       ? '다른 창에서 수정했습니다. 내용을 복사한 후 새로고침해 주세요.'
       : '저장 실패. 수정 내용은 남아 있습니다. 다시 저장해 주세요.';
   } finally { busy = false; controls(); }
@@ -148,8 +123,8 @@ cancel.onclick = () => {
 logout.onclick = async () => {
   if (dirty() && !confirm('변경 사항을 취소하고 로그아웃할까요?')) return;
   busy = true; controls();
-  try { await sdk.signOut(auth); apply(); mode(false); }
-  catch { controls('로그아웃에 실패했습니다. 다시 시도해 주세요.'); }
+  try { await api('/logout', { method: 'POST' }); token = null; apply(); mode(false); }
+  catch (error) { if (error.status === 401) { token = null; apply(); mode(false); } else controls('로그아웃에 실패했습니다. 다시 시도해 주세요.'); }
   finally { busy = false; controls(); }
 };
 window.addEventListener('beforeunload', event => { if (active && dirty()) { event.preventDefault(); event.returnValue = ''; } });
